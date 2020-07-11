@@ -1,355 +1,357 @@
 <html>
-<head>
-	<style>
-		*{margin:0;padding:0;background:white;}
-		body{overflow:hidden;}
-		form{
-		  position:absolute;
-		  bottom:0;
-		  left:0;
-		  right:0;
-		  background:#efefef;
-		  padding:1em;
-		  text-align:center;
-		}		
-	</style>
-	<script>
-	
-		var canvas;
-		var ctx;
-		var x1;
-		var x2;
-		var y;
-		var color;
+	<head>
+		<title>Personalization Framework</title>
+		<style>
+			*{margin:0;padding:0;background:white;}
+			body{overflow:hidden;}
+			form{
+			  position:absolute;
+			  bottom:0;
+			  left:0;
+			  right:0;
+			  background:#efefef;
+			  padding:1em;
+			  text-align:center;
+			}	
+			canvas { display: block; }
+		</style>
+		<script src="scripts/jquery-3.5.1.min.js"></script>
+	</head>
+	<body style="font-family: Century Gothic, sans-serif;">
+		<div style="position:absolute;">
+			<table cellspacing="1" cellpadding="1" border="1" width="400" height="200">
+				<tr>
+					<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Channel</td>
+					<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Segmentation</td>
+					<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Optimization</td>
+				</tr>
+				<tr>
+					<td style="background-color:#173F5F !important;color:#FFFFFF;padding:5px;">Mobile</td>
+					<td>
+						<select name="series1x" id="series1x" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1" >Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>			
+					</td>
+					<td>
+						<select name="series1y" id="series1y" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#20639B !important;color:#FFFFFF;padding:5px;">Direct</td>
+					<td>
+						<select name="series2x" id="series2x" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>			
+					</td>
+					<td>
+						<select name="series2y" id="series2y" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#3CAEA3 !important;color:#FFFFFF;padding:5px;">Indirect</td>
+					<td>
+						<select name="series3x" id="series3x" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>				
+					</td>
+					<td>
+						<select name="series3y" id="series3y" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#F6D55C !important;color:#FFFFFF;padding:5px;">Customer Care</td>
+					<td>
+						<select name="series4x" id="series4x" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>				
+					</td>
+					<td>
+						<select name="series4y" id="series4y" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>	
+					</td>
+				</tr>	
+				<tr>
+					<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Others</td>
+					<td>
+						<select name="series5x" id="series5x" onchange="drawSeries5()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>	
+					</td>
+					<td>
+						<select name="series5y" id="series5y" onchange="drawSeries5()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>			
+					</td>
+				</tr>	
+			</table>
+		</div>
+		<script src="scripts/three.js"></script>
+		<script src="scripts/TrackballControls.js"></script>
 		
-		function renderCube(){
-			// Set up our canvas
-			canvas = document.createElement('canvas');
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-			document.body.appendChild(canvas);
-			ctx = canvas.getContext('2d');
-			renderPlot();
-		}
-		
-		
-		function drawSeries1(){
-
-			var x = document.getElementById("series1x").value;
-			var y = document.getElementById("series1y").value;
-		
-			var layer1 =[[1200,700],[1100,750],[1000,800],[900,850],[800,900]];
-			var layer2 =[[1200,600],[1100,650],[1000,700],[900,750],[800,800]];
-			var layer3 =[[1200,500],[1100,550],[1000,600],[900,650],[800,700]];
-			var layer4 =[[1200,400],[1100,450],[1000,500],[900,550],[800,600]];
-			var layer5 =[[1200,300],[1100,350],[1000,400],[900,450],[800,500]];
-			var layers = [layer1,layer2,layer3,layer4,layer5];
+		<script>
+			var three = THREE;
+			var mouse = new THREE.Vector2();
+			var scene = new three.Scene();
+			scene.background = new THREE.Color( 0xffffff );
 			
-			for(var i=0;i<=(y-1);i++){
-				var currentLayer = layers[i];
-				for(var j=0;j<=(x-1);j++){
-					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#173F5F');
-				}
+			var camera = new three.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
+			var renderer = new three.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			camera.position.z = 20;
+			camera.position.x = 20;
+			camera.position.y = 20;			
+			
+			var lineMaterial = new THREE.LineBasicMaterial( { color: 0x808080 } );
+			var pointsy = [];
+			pointsy.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			pointsy.push( new THREE.Vector3( -0.5, 5, -0.5 ) );
+			var lineGeometryy = new THREE.BufferGeometry().setFromPoints( pointsy );
+			var liney = new THREE.Line( lineGeometryy, lineMaterial );
+			scene.add( liney );
+			
+			var pointsx = [];
+			pointsx.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			pointsx.push( new THREE.Vector3( 5, -0.5, -0.5 ) );
+			var lineGeometryx = new THREE.BufferGeometry().setFromPoints( pointsx );
+			var linex = new THREE.Line( lineGeometryx, lineMaterial );
+			scene.add( linex );
+			
+			var pointsz = [];
+			pointsz.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			pointsz.push( new THREE.Vector3( -0.5, -0.5, 5 ) );
+			var lineGeometryz = new THREE.BufferGeometry().setFromPoints( pointsz );
+			var linez = new THREE.Line( lineGeometryz, lineMaterial );
+			scene.add( linez );			
+			
+			
+			var controls = new THREE.TrackballControls( camera, renderer.domElement );
+			controls.rotateSpeed = 1.0;
+			controls.zoomSpeed = 1.2;
+			controls.panSpeed = 0.9;
+			controls.noZoom = false;
+			controls.maxDistance = 15;
+			controls.minDistance = 3;
+			controls.noPan = false;
+			controls.staticMoving = false;
+			controls.dynamicDampingFactor = 0.1;
+			
+			renderer.domElement.addEventListener( 'mousemove', onMouseMove );
+
+			function createBlock(x,y,z,geo,mat){
+				var cube = new THREE.Mesh( geo, mat );
+				cube.position.set( x, y, z );
+				var cubeGeo = new THREE.EdgesGeometry( cube.geometry ); // or WireframeGeometry
+				var cubeMat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
+				var wireframe = new THREE.LineSegments( cubeGeo, cubeMat );
+				cube.add( wireframe );
+				return cube;				
 			}
-		
-		}
-		
-
-		function drawSeries2(){
-		
-		
-			var x = document.getElementById("series2x").value;
-			var y = document.getElementById("series2y").value;		
-		
-			var layer1 =[[1300,750],[1200,800],[1100,850],[1000,900],[900,950]];
-			var layer2 =[[1300,650],[1200,700],[1100,750],[1000,800],[900,850]];
-			var layer3 =[[1300,550],[1200,600],[1100,650],[1000,700],[900,750]];
-			var layer4 =[[1300,450],[1200,500],[1100,550],[1000,600],[900,650]];
-			var layer5 =[[1300,350],[1200,400],[1100,450],[1000,500],[900,550]];
-			var layers = [layer1,layer2,layer3,layer4,layer5];
-
+			var groupSeries1 = new THREE.Group();
+			var groupSeries2 = new THREE.Group();
+			var groupSeries3 = new THREE.Group();
+			var groupSeries4 = new THREE.Group();
+			var groupSeries5 = new THREE.Group();
 			
-			for(var i=0;i<=(y-1);i++){
-				var currentLayer = layers[i];
-				for(var j=0;j<=(x-1);j++){
-					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#20639B');
+			function drawSeries1(){
+				
+				scene.remove(groupSeries1);
+				groupSeries1 = new THREE.Group();
+				var x = document.getElementById("series1x").value;
+				var y = document.getElementById("series1y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x173F5F, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
+				var layer2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
+				var layer3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
+				var layer4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
+				var layer5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries1.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
 				}
+				scene.add(groupSeries1);
 			}
-		
-		}
-		
-		function drawSeries3(){
-		
-			var x = document.getElementById("series3x").value;
-			var y = document.getElementById("series3y").value;	
-			
-			var layer1 =[[1400,800],[1300,850],[1200,900],[1100,950],[1000,1000]];
-			var layer2 =[[1400,700],[1300,750],[1200,800],[1100,850],[1000,900]];
-			var layer3 =[[1400,600],[1300,650],[1200,700],[1100,750],[1000,800]];
-			var layer4 =[[1400,500],[1300,550],[1200,600],[1100,650],[1000,700]];
-			var layer5 =[[1400,400],[1300,450],[1200,500],[1100,550],[1000,600]];
-			var layers = [layer1,layer2,layer3,layer4,layer5];
 
-			
-			for(var i=0;i<=(y-1);i++){
-				var currentLayer = layers[i];
-				for(var j=0;j<=(x-1);j++){
-					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#3CAEA3');
+			function drawSeries2(){
+				
+				scene.remove(groupSeries2);
+				groupSeries2 = new THREE.Group();
+				var x = document.getElementById("series2x").value;
+				var y = document.getElementById("series2y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x20639B, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
+				var layer2 =[[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,1,4]];
+				var layer3 =[[1,2,0],[1,2,1],[1,2,2],[1,2,3],[1,2,4]];
+				var layer4 =[[1,3,0],[1,3,1],[1,3,2],[1,3,3],[1,3,4]];
+				var layer5 =[[1,4,0],[1,4,1],[1,4,2],[1,4,3],[1,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries2.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
 				}
+				scene.add(groupSeries2);
 			}
-		
-		}		
-		
-		
-		function drawSeries4(){
-		
-			var x = document.getElementById("series4x").value;
-			var y = document.getElementById("series4y").value;			
-		
-			var layer1 =[[1500,850],[1400,900],[1300,950],[1200,1000],[1100,1050]];
-			var layer2 =[[1500,750],[1400,800],[1300,850],[1200,900],[1100,950]];
-			var layer3 =[[1500,650],[1400,700],[1300,750],[1200,800],[1100,850]];
-			var layer4 =[[1500,550],[1400,600],[1300,650],[1200,700],[1100,750]];
-			var layer5 =[[1500,450],[1400,500],[1300,550],[1200,600],[1100,650]];
-			var layers = [layer1,layer2,layer3,layer4,layer5];
 
-			
-			for(var i=0;i<=(y-1);i++){
-				var currentLayer = layers[i];
-				for(var j=0;j<=(x-1);j++){
-					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#F6D55C');
+			function drawSeries3(){
+				
+				scene.remove(groupSeries3);
+				groupSeries3 = new THREE.Group();
+				var x = document.getElementById("series3x").value;
+				var y = document.getElementById("series3y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x3CAEA3, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
+				var layer2 =[[2,1,0],[2,1,1],[2,1,2],[2,1,3],[2,1,4]];
+				var layer3 =[[2,2,0],[2,2,1],[2,2,2],[2,2,3],[2,2,4]];
+				var layer4 =[[2,3,0],[2,3,1],[2,3,2],[2,3,3],[2,3,4]];
+				var layer5 =[[2,4,0],[2,4,1],[2,4,2],[2,4,3],[2,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries3.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
 				}
+				scene.add(groupSeries3);
 			}
-		
-		}			
 
-		function drawSeries5(){
-		
-			var x = document.getElementById("series5x").value;
-			var y = document.getElementById("series5y").value;	
-			
-			var layer1 =[[1600,900],[1500,950],[1400,1000],[1300,1050],[1200,1100]];
-			var layer2 =[[1600,800],[1500,850],[1400,900],[1300,950],[1200,1000]];
-			var layer3 =[[1600,700],[1500,750],[1400,800],[1300,850],[1200,900]];
-			var layer4 =[[1600,600],[1500,650],[1400,700],[1300,750],[1200,800]];
-			var layer5 =[[1600,500],[1500,550],[1400,600],[1300,650],[1200,700]];
-			var layers = [layer1,layer2,layer3,layer4,layer5];
-
-			
-			for(var i=0;i<=(y-1);i++){
-				var currentLayer = layers[i];
-				for(var j=0;j<=(x-1);j++){
-					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#ED553B');
+			function drawSeries4(){
+				
+				scene.remove(groupSeries4);
+				groupSeries4 = new THREE.Group();
+				var x = document.getElementById("series4x").value;
+				var y = document.getElementById("series4y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xF6D55C, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
+				var layer2 =[[3,1,0],[3,1,1],[3,1,2],[3,1,3],[3,1,4]];
+				var layer3 =[[3,2,0],[3,2,1],[3,2,2],[3,2,3],[3,2,4]];
+				var layer4 =[[3,3,0],[3,3,1],[3,3,2],[3,3,3],[3,3,4]];
+				var layer5 =[[3,4,0],[3,4,1],[3,4,2],[3,4,3],[3,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries4.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
 				}
+				scene.add(groupSeries4);
 			}
-		
-		}
-		
-		function renderPlot(){
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			drawSeries1();
-			drawSeries2();
-			drawSeries3();
-			drawSeries4();
-			drawSeries5();
-		}
-		
-		// Animation function
-		function draw(){
-		  // clear the canvas
-		  //ctx.clearRect(0, 0, canvas.width, canvas.height);
-		  
-		  // Wobble the cube using a sine wave
-		  //var wobble = Math.sin(Date.now()/250)*window.innerHeight/50;
-		  
-		  // draw the cube
-		  /*drawCube(
-			window.innerWidth/2,
-			window.innerHeight/2 + wobble + y.value/2,
-			Number(x1.value),
-			Number(x2.value),
-			Number(y.value),
-			color.value
-		  );*/
-		  
-		  //drawSeries1(1,1);
-		  //drawSeries2(1,1);
-		  //drawSeries3(1,1);
-		  //drawSeries4(1,1);
-		  //drawSeries5(1,1);
 
-		}
-		//draw();
-
-		// Colour adjustment function
-		// Nicked from http://stackoverflow.com/questions/5560248
-		function shadeColor(color, percent) {
-		  color = color.substr(1);
-		  var num = parseInt(color, 16),
-			amt = Math.round(2.55 * percent),
-			R = (num >> 16) + amt,
-			G = (num >> 8 & 0x00FF) + amt,
-			B = (num & 0x0000FF) + amt;
-		  return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
-		}
-
-		// Draw a cube to the specified specs
-		function drawCube(x, y, wx, wy, h, color) {
+			function drawSeries5(){
+				
+				scene.remove(groupSeries5);
+				groupSeries5 = new THREE.Group();
+				var x = document.getElementById("series5x").value;
+				var y = document.getElementById("series5y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
+				var layer2 =[[4,1,0],[4,1,1],[4,1,2],[4,1,3],[4,1,4]];
+				var layer3 =[[4,2,0],[4,2,1],[4,2,2],[4,2,3],[4,2,4]];
+				var layer4 =[[4,3,0],[4,3,1],[4,3,2],[4,3,3],[4,3,4]];
+				var layer5 =[[4,4,0],[4,4,1],[4,4,2],[4,4,3],[4,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries5.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeries5);
+			}
 			
-			x=(x*0.5)+100; y=(y*0.5); wx=wx*0.5; wy=wy*0.5; h=h*0.5;
+			function onMouseMove( e ) {
+
+				mouse.x = e.clientX;
+				mouse.y = e.clientY;
+
+			}
 			
-			ctx.globalAlpha = 0.90;
-			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x - wx, y - wx * 0.5);
-			ctx.lineTo(x - wx, y - h - wx * 0.5);
-			ctx.lineTo(x, y - h * 1);
-			ctx.closePath();
-			ctx.fillStyle = shadeColor(color, -10);
-			ctx.strokeStyle = color;
-			ctx.stroke();
-			ctx.fill();
-
-			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x + wy, y - wy * 0.5);
-			ctx.lineTo(x + wy, y - h - wy * 0.5);
-			ctx.lineTo(x, y - h * 1);
-			ctx.closePath();
-			ctx.fillStyle = shadeColor(color, 10);
-			ctx.strokeStyle = shadeColor(color, 50);
-			ctx.stroke();
-			ctx.fill();
-
-			ctx.beginPath();
-			ctx.moveTo(x, y - h);
-			ctx.lineTo(x - wx, y - h - wx * 0.5);
-			ctx.lineTo(x - wx + wy, y - h - (wx * 0.5 + wy * 0.5));
-			ctx.lineTo(x + wy, y - h - wy * 0.5);
-			ctx.closePath();
+			// shim layer with setTimeout fallback
+			window.requestAnimFrame = (function(){
+				return  window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					function(callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+			
+			function render() {
+				controls.update();
+				renderer.render(scene, camera);
+				requestAnimFrame(render);
+			}			
+			render();
 		
-			ctx.fillStyle = shadeColor(color, 20);
-			ctx.strokeStyle = shadeColor(color, 60);
-			ctx.stroke();
-			ctx.fill();
-		  }
 		
-	</script>
-</head>
-<body onload="renderCube();" style="font-family: Century Gothic, sans-serif;">
-<div style="position:absolute;">
-	<table cellspacing="1" cellpadding="1" border="1" width="400" height="200">
-		<tr>
-			<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Channel</td>
-			<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Segmentation</td>
-			<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Optimization</td>
-		</tr>
-		<tr>
-			<td style="background-color:#173F5F !important;color:#FFFFFF;padding:5px;">Mobile</td>
-			<td>
-				<select name="series1x" id="series1x" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1" >Mass</option>
-				  <option value="2">Macro</option>
-				  <option value="3">Micro</option>
-				  <option value="4">Person</option>
-				  <option value="5">Hyper</option>
-				</select>			
-			</td>
-			<td>
-				<select name="series1y" id="series1y" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">None</option>
-				  <option value="2">Analytics</option>
-				  <option value="3">Feedback</option>
-				  <option value="4">Reinforcement</option>
-				  <option value="5">Click Stream</option>
-				</select>				
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color:#20639B !important;color:#FFFFFF;padding:5px;">Direct</td>
-			<td>
-				<select name="series2x" id="series2x" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">Mass</option>
-				  <option value="2">Macro</option>
-				  <option value="3">Micro</option>
-				  <option value="4">Person</option>
-				  <option value="5">Hyper</option>
-				</select>			
-			</td>
-			<td>
-				<select name="series2y" id="series2y" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">None</option>
-				  <option value="2">Analytics</option>
-				  <option value="3">Feedback</option>
-				  <option value="4">Reinforcement</option>
-				  <option value="5">Click Stream</option>
-				</select>				
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color:#3CAEA3 !important;color:#FFFFFF;padding:5px;">Indirect</td>
-			<td>
-				<select name="series3x" id="series3x" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">Mass</option>
-				  <option value="2">Macro</option>
-				  <option value="3">Micro</option>
-				  <option value="4">Person</option>
-				  <option value="5">Hyper</option>
-				</select>				
-			</td>
-			<td>
-				<select name="series3y" id="series3y" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">None</option>
-				  <option value="2">Analytics</option>
-				  <option value="3">Feedback</option>
-				  <option value="4">Reinforcement</option>
-				  <option value="5">Click Stream</option>
-				</select>				
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color:#F6D55C !important;color:#FFFFFF;padding:5px;">Customer Care</td>
-			<td>
-				<select name="series4x" id="series4x" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">Mass</option>
-				  <option value="2">Macro</option>
-				  <option value="3">Micro</option>
-				  <option value="4">Person</option>
-				  <option value="5">Hyper</option>
-				</select>				
-			</td>
-			<td>
-				<select name="series4y" id="series4y" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">None</option>
-				  <option value="2">Analytics</option>
-				  <option value="3">Feedback</option>
-				  <option value="4">Reinforcement</option>
-				  <option value="5">Click Stream</option>
-				</select>	
-			</td>
-		</tr>	
-		<tr>
-			<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Others</td>
-			<td>
-				<select name="series5x" id="series5x" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">Mass</option>
-				  <option value="2">Macro</option>
-				  <option value="3">Micro</option>
-				  <option value="4">Person</option>
-				  <option value="5">Hyper</option>
-				</select>	
-			</td>
-			<td>
-				<select name="series5y" id="series5y" onchange="renderPlot()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-				  <option value="1">None</option>
-				  <option value="2">Analytics</option>
-				  <option value="3">Feedback</option>
-				  <option value="4">Reinforcement</option>
-				  <option value="5">Click Stream</option>
-				</select>			
-			</td>
-		</tr>	
-	</table>
-</div>
-</body>
+		</script>
+		
+	</body>
 </html>
