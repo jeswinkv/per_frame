@@ -1,0 +1,357 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			*{margin:0;padding:0;background:white;}
+			body{overflow:hidden;}
+			form{
+			  position:absolute;
+			  bottom:0;
+			  left:0;
+			  right:0;
+			  background:#efefef;
+			  padding:1em;
+			  text-align:center;
+			}	
+			canvas { display: block; }
+		</style>
+		<script src="scripts/jquery-3.5.1.min.js"></script>
+	</head>
+	<body style="font-family: Century Gothic, sans-serif;">
+		<div style="position:absolute;">
+			<table cellspacing="1" cellpadding="1" border="1" width="400" height="200">
+				<tr>
+					<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Channel</td>
+					<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Segmentation</td>
+					<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Optimization</td>
+				</tr>
+				<tr>
+					<td style="background-color:#173F5F !important;color:#FFFFFF;padding:5px;">Mobile</td>
+					<td>
+						<select name="series1x" id="series1x" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1" >Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>			
+					</td>
+					<td>
+						<select name="series1y" id="series1y" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#20639B !important;color:#FFFFFF;padding:5px;">Direct</td>
+					<td>
+						<select name="series2x" id="series2x" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>			
+					</td>
+					<td>
+						<select name="series2y" id="series2y" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#3CAEA3 !important;color:#FFFFFF;padding:5px;">Indirect</td>
+					<td>
+						<select name="series3x" id="series3x" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>				
+					</td>
+					<td>
+						<select name="series3y" id="series3y" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>				
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#F6D55C !important;color:#FFFFFF;padding:5px;">Customer Care</td>
+					<td>
+						<select name="series4x" id="series4x" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>				
+					</td>
+					<td>
+						<select name="series4y" id="series4y" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>	
+					</td>
+				</tr>	
+				<tr>
+					<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Others</td>
+					<td>
+						<select name="series5x" id="series5x" onchange="drawSeries5()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">Mass</option>
+						  <option value="2">Macro</option>
+						  <option value="3">Micro</option>
+						  <option value="4">Person</option>
+						  <option value="5">Hyper</option>
+						</select>	
+					</td>
+					<td>
+						<select name="series5y" id="series5y" onchange="drawSeries5()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+						  <option value="1">None</option>
+						  <option value="2">Analytics</option>
+						  <option value="3">Feedback</option>
+						  <option value="4">Reinforcement</option>
+						  <option value="5">Click Stream</option>
+						</select>			
+					</td>
+				</tr>	
+			</table>
+		</div>
+		<script src="scripts/three.js"></script>
+		<script src="scripts/TrackballControls.js"></script>
+		
+		<script>
+			var three = THREE;
+			var mouse = new THREE.Vector2();
+			var scene = new three.Scene();
+			scene.background = new THREE.Color( 0xffffff );
+			
+			var camera = new three.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
+			var renderer = new three.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			camera.position.z = 20;
+			camera.position.x = 20;
+			camera.position.y = 20;			
+			
+			var lineMaterial = new THREE.LineBasicMaterial( { color: 0x808080 } );
+			var pointsy = [];
+			pointsy.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			pointsy.push( new THREE.Vector3( -0.5, 5, -0.5 ) );
+			var lineGeometryy = new THREE.BufferGeometry().setFromPoints( pointsy );
+			var liney = new THREE.Line( lineGeometryy, lineMaterial );
+			scene.add( liney );
+			
+			var pointsx = [];
+			pointsx.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			pointsx.push( new THREE.Vector3( 5, -0.5, -0.5 ) );
+			var lineGeometryx = new THREE.BufferGeometry().setFromPoints( pointsx );
+			var linex = new THREE.Line( lineGeometryx, lineMaterial );
+			scene.add( linex );
+			
+			var pointsz = [];
+			pointsz.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			pointsz.push( new THREE.Vector3( -0.5, -0.5, 5 ) );
+			var lineGeometryz = new THREE.BufferGeometry().setFromPoints( pointsz );
+			var linez = new THREE.Line( lineGeometryz, lineMaterial );
+			scene.add( linez );			
+			
+			
+			var controls = new THREE.TrackballControls( camera, renderer.domElement );
+			controls.rotateSpeed = 1.0;
+			controls.zoomSpeed = 1.2;
+			controls.panSpeed = 0.9;
+			controls.noZoom = false;
+			controls.maxDistance = 15;
+			controls.minDistance = 3;
+			controls.noPan = false;
+			controls.staticMoving = false;
+			controls.dynamicDampingFactor = 0.1;
+			
+			renderer.domElement.addEventListener( 'mousemove', onMouseMove );
+
+			function createBlock(x,y,z,geo,mat){
+				var cube = new THREE.Mesh( geo, mat );
+				cube.position.set( x, y, z );
+				var cubeGeo = new THREE.EdgesGeometry( cube.geometry ); // or WireframeGeometry
+				var cubeMat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
+				var wireframe = new THREE.LineSegments( cubeGeo, cubeMat );
+				cube.add( wireframe );
+				return cube;				
+			}
+			var groupSeries1 = new THREE.Group();
+			var groupSeries2 = new THREE.Group();
+			var groupSeries3 = new THREE.Group();
+			var groupSeries4 = new THREE.Group();
+			var groupSeries5 = new THREE.Group();
+			
+			function drawSeries1(){
+				
+				scene.remove(groupSeries1);
+				groupSeries1 = new THREE.Group();
+				var x = document.getElementById("series1x").value;
+				var y = document.getElementById("series1y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x173F5F, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
+				var layer2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
+				var layer3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
+				var layer4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
+				var layer5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries1.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeries1);
+			}
+
+			function drawSeries2(){
+				
+				scene.remove(groupSeries2);
+				groupSeries2 = new THREE.Group();
+				var x = document.getElementById("series2x").value;
+				var y = document.getElementById("series2y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x20639B, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
+				var layer2 =[[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,1,4]];
+				var layer3 =[[1,2,0],[1,2,1],[1,2,2],[1,2,3],[1,2,4]];
+				var layer4 =[[1,3,0],[1,3,1],[1,3,2],[1,3,3],[1,3,4]];
+				var layer5 =[[1,4,0],[1,4,1],[1,4,2],[1,4,3],[1,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries2.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeries2);
+			}
+
+			function drawSeries3(){
+				
+				scene.remove(groupSeries3);
+				groupSeries3 = new THREE.Group();
+				var x = document.getElementById("series3x").value;
+				var y = document.getElementById("series3y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x3CAEA3, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
+				var layer2 =[[2,1,0],[2,1,1],[2,1,2],[2,1,3],[2,1,4]];
+				var layer3 =[[2,2,0],[2,2,1],[2,2,2],[2,2,3],[2,2,4]];
+				var layer4 =[[2,3,0],[2,3,1],[2,3,2],[2,3,3],[2,3,4]];
+				var layer5 =[[2,4,0],[2,4,1],[2,4,2],[2,4,3],[2,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries3.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeries3);
+			}
+
+			function drawSeries4(){
+				
+				scene.remove(groupSeries4);
+				groupSeries4 = new THREE.Group();
+				var x = document.getElementById("series4x").value;
+				var y = document.getElementById("series4y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xF6D55C, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
+				var layer2 =[[3,1,0],[3,1,1],[3,1,2],[3,1,3],[3,1,4]];
+				var layer3 =[[3,2,0],[3,2,1],[3,2,2],[3,2,3],[3,2,4]];
+				var layer4 =[[3,3,0],[3,3,1],[3,3,2],[3,3,3],[3,3,4]];
+				var layer5 =[[3,4,0],[3,4,1],[3,4,2],[3,4,3],[3,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries4.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeries4);
+			}
+
+			function drawSeries5(){
+				
+				scene.remove(groupSeries5);
+				groupSeries5 = new THREE.Group();
+				var x = document.getElementById("series5x").value;
+				var y = document.getElementById("series5y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
+				var layer2 =[[4,1,0],[4,1,1],[4,1,2],[4,1,3],[4,1,4]];
+				var layer3 =[[4,2,0],[4,2,1],[4,2,2],[4,2,3],[4,2,4]];
+				var layer4 =[[4,3,0],[4,3,1],[4,3,2],[4,3,3],[4,3,4]];
+				var layer5 =[[4,4,0],[4,4,1],[4,4,2],[4,4,3],[4,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries5.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeries5);
+			}
+			
+			function onMouseMove( e ) {
+
+				mouse.x = e.clientX;
+				mouse.y = e.clientY;
+
+			}
+			
+			// shim layer with setTimeout fallback
+			window.requestAnimFrame = (function(){
+				return  window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					function(callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+			
+			function render() {
+				controls.update();
+				renderer.render(scene, camera);
+				requestAnimFrame(render);
+			}			
+			render();
+		
+		
+		</script>
+		
+	</body>
+</html>

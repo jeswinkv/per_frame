@@ -1,0 +1,380 @@
+<html>
+<head>
+	<style>
+		*{margin:0;padding:0;background:white;}
+		body{overflow:hidden;}
+		form{
+		  position:absolute;
+		  bottom:0;
+		  left:0;
+		  right:0;
+		  background:#efefef;
+		  padding:1em;
+		  text-align:center;
+		}		
+	</style>
+	<script>
+	
+		var canvas;
+		var ctx;
+		var x1;
+		var x2;
+		var y;
+		var color;
+		
+		function renderCube(){
+			// Set up our canvas
+			canvas = document.createElement('canvas');
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			document.body.appendChild(canvas);
+			ctx = canvas.getContext('2d');
+
+			// Pick out the form elements for easy access later
+			x1 = document.querySelector('#x1');
+			x2 = document.querySelector('#x2');
+			y = document.querySelector('#y');
+			color = document.querySelector('#color');
+			draw();
+		}
+		
+	
+		function drawSeries1(x,y){
+		
+			var layer1 =[[1200,700],[1100,750],[1000,800],[900,850],[800,900]];
+			var layer2 =[[1200,600],[1100,650],[1000,700],[900,750],[800,800]];
+			var layer3 =[[1200,500],[1100,550],[1000,600],[900,650],[800,700]];
+			var layer4 =[[1200,400],[1100,450],[1000,500],[900,550],[800,600]];
+			var layer5 =[[1200,300],[1100,350],[1000,400],[900,450],[800,500]];
+			var layers = [layer1,layer2,layer3,layer4,layer5];
+
+			
+			for(var i=0;i<=(y-1);i++){
+				var currentLayer = layers[i];
+				for(var j=0;j<=(x-1);j++){
+					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#173F5F');
+				}
+			}
+		
+		}
+		
+
+		function drawSeries2(x,y){
+		
+			var layer1 =[[1300,750],[1200,800],[1100,850],[1000,900],[900,950]];
+			var layer2 =[[1300,650],[1200,700],[1100,750],[1000,800],[900,850]];
+			var layer3 =[[1300,550],[1200,600],[1100,650],[1000,700],[900,750]];
+			var layer4 =[[1300,450],[1200,500],[1100,550],[1000,600],[900,650]];
+			var layer5 =[[1300,350],[1200,400],[1100,450],[1000,500],[900,550]];
+			var layers = [layer1,layer2,layer3,layer4,layer5];
+
+			
+			for(var i=0;i<=(y-1);i++){
+				var currentLayer = layers[i];
+				for(var j=0;j<=(x-1);j++){
+					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#20639B');
+				}
+			}
+		
+		}
+		
+		function drawSeries3(x,y){
+		
+			var layer1 =[[1400,800],[1300,850],[1200,900],[1100,950],[1000,1000]];
+			var layer2 =[[1400,700],[1300,750],[1200,800],[1100,850],[1000,900]];
+			var layer3 =[[1400,600],[1300,650],[1200,700],[1100,750],[1000,800]];
+			var layer4 =[[1400,500],[1300,550],[1200,600],[1100,650],[1000,700]];
+			var layer5 =[[1400,400],[1300,450],[1200,500],[1100,550],[1000,600]];
+			var layers = [layer1,layer2,layer3,layer4,layer5];
+
+			
+			for(var i=0;i<=(y-1);i++){
+				var currentLayer = layers[i];
+				for(var j=0;j<=(x-1);j++){
+					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#3CAEA3');
+				}
+			}
+		
+		}		
+		
+		
+		function drawSeries4(x,y){
+		
+			var layer1 =[[1500,850],[1400,900],[1300,950],[1200,1000],[1100,1050]];
+			var layer2 =[[1500,750],[1400,800],[1300,850],[1200,900],[1100,950]];
+			var layer3 =[[1500,650],[1400,700],[1300,750],[1200,800],[1100,850]];
+			var layer4 =[[1500,550],[1400,600],[1300,650],[1200,700],[1100,750]];
+			var layer5 =[[1500,450],[1400,500],[1300,550],[1200,600],[1100,650]];
+			var layers = [layer1,layer2,layer3,layer4,layer5];
+
+			
+			for(var i=0;i<=(y-1);i++){
+				var currentLayer = layers[i];
+				for(var j=0;j<=(x-1);j++){
+					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#F6D55C');
+				}
+			}
+		
+		}			
+
+		function drawSeries5(x,y){
+		
+			var layer1 =[[1600,900],[1500,950],[1400,1000],[1300,1050],[1200,1100]];
+			var layer2 =[[1600,800],[1500,850],[1400,900],[1300,950],[1200,1000]];
+			var layer3 =[[1600,700],[1500,750],[1400,800],[1300,850],[1200,900]];
+			var layer4 =[[1600,600],[1500,650],[1400,700],[1300,750],[1200,800]];
+			var layer5 =[[1600,500],[1500,550],[1400,600],[1300,650],[1200,700]];
+			var layers = [layer1,layer2,layer3,layer4,layer5];
+
+			
+			for(var i=0;i<=(y-1);i++){
+				var currentLayer = layers[i];
+				for(var j=0;j<=(x-1);j++){
+					drawCube(currentLayer[j][0],currentLayer[j][1],100,100,100,'#ED553B');
+				}
+			}
+		
+		}
+		
+		// Animation function
+		function draw(){
+		  // clear the canvas
+		  ctx.clearRect(0, 0, canvas.width, canvas.height);
+		  
+		  // Wobble the cube using a sine wave
+		  var wobble = Math.sin(Date.now()/250)*window.innerHeight/50;
+		  
+		  // draw the cube
+		  /*drawCube(
+			window.innerWidth/2,
+			window.innerHeight/2 + wobble + y.value/2,
+			Number(x1.value),
+			Number(x2.value),
+			Number(y.value),
+			color.value
+		  );*/
+		  
+		  drawSeries1(5,5);
+		  drawSeries2(4,4);
+		  drawSeries3(3,3);
+		  drawSeries4(2,2);
+		  drawSeries5(1,1);
+		  
+		  //first group
+			/*drawCube(1200,700,100,100,100,'#173F5F');
+			drawCube(1100,750,100,100,100,'#173F5F');
+			drawCube(1000,800,100,100,100,'#173F5F');
+			drawCube(900,850,100,100,100,'#173F5F');
+			drawCube(800,900,100,100,100,'#173F5F');
+
+			drawCube(1200,600,100,100,100,'#173F5F');
+			drawCube(1100,650,100,100,100,'#173F5F');
+			drawCube(1000,700,100,100,100,'#173F5F');
+			drawCube(900,750,100,100,100,'#173F5F');
+			drawCube(800,800,100,100,100,'#173F5F');			
+
+			drawCube(1200,500,100,100,100,'#173F5F');
+			drawCube(1100,550,100,100,100,'#173F5F');
+			drawCube(1000,600,100,100,100,'#173F5F');
+			drawCube(900,650,100,100,100,'#173F5F');
+			drawCube(800,700,100,100,100,'#173F5F');			
+
+			drawCube(1200,400,100,100,100,'#173F5F');
+			drawCube(1100,450,100,100,100,'#173F5F');
+			drawCube(1000,500,100,100,100,'#173F5F');
+			drawCube(900,550,100,100,100,'#173F5F');
+			drawCube(800,600,100,100,100,'#173F5F');			
+
+			drawCube(1200,300,100,100,100,'#173F5F');
+			drawCube(1100,350,100,100,100,'#173F5F');
+			drawCube(1000,400,100,100,100,'#173F5F');
+			drawCube(900,450,100,100,100,'#173F5F');
+			drawCube(800,500,100,100,100,'#173F5F');			
+			
+			
+			// second group
+			drawCube(1300,750,100,100,100,'#20639B');
+			drawCube(1200,800,100,100,100,'#20639B');
+			drawCube(1100,850,100,100,100,'#20639B');
+			drawCube(1000,900,100,100,100,'#20639B');
+			drawCube(900,950,100,100,100,'#20639B');
+
+			drawCube(1300,650,100,100,100,'#20639B');
+			drawCube(1200,700,100,100,100,'#20639B');
+			drawCube(1100,750,100,100,100,'#20639B');
+			drawCube(1000,800,100,100,100,'#20639B');
+			drawCube(900,850,100,100,100,'#20639B');
+			
+			drawCube(1300,550,100,100,100,'#20639B');
+			drawCube(1200,600,100,100,100,'#20639B');
+			drawCube(1100,650,100,100,100,'#20639B');
+			drawCube(1000,700,100,100,100,'#20639B');
+			drawCube(900,750,100,100,100,'#20639B');
+
+			drawCube(1300,450,100,100,100,'#20639B');
+			drawCube(1200,500,100,100,100,'#20639B');
+			drawCube(1100,550,100,100,100,'#20639B');
+			drawCube(1000,600,100,100,100,'#20639B');
+			drawCube(900,650,100,100,100,'#20639B');
+
+			drawCube(1300,350,100,100,100,'#20639B');
+			drawCube(1200,400,100,100,100,'#20639B');
+			drawCube(1100,450,100,100,100,'#20639B');
+			drawCube(1000,500,100,100,100,'#20639B');
+			drawCube(900,550,100,100,100,'#20639B');
+
+			//third group
+			drawCube(1400,800,100,100,100,'#3CAEA3');
+			drawCube(1300,850,100,100,100,'#3CAEA3');
+			drawCube(1200,900,100,100,100,'#3CAEA3');
+			drawCube(1100,950,100,100,100,'#3CAEA3');
+			drawCube(1000,1000,100,100,100,'#3CAEA3');
+
+			drawCube(1400,700,100,100,100,'#3CAEA3');
+			drawCube(1300,750,100,100,100,'#3CAEA3');
+			drawCube(1200,800,100,100,100,'#3CAEA3');
+			drawCube(1100,850,100,100,100,'#3CAEA3');
+			drawCube(1000,900,100,100,100,'#3CAEA3');
+
+			drawCube(1400,600,100,100,100,'#3CAEA3');
+			drawCube(1300,650,100,100,100,'#3CAEA3');
+			drawCube(1200,700,100,100,100,'#3CAEA3');
+			drawCube(1100,750,100,100,100,'#3CAEA3');
+			drawCube(1000,800,100,100,100,'#3CAEA3');
+
+			drawCube(1400,500,100,100,100,'#3CAEA3');
+			drawCube(1300,550,100,100,100,'#3CAEA3');
+			drawCube(1200,600,100,100,100,'#3CAEA3');
+			drawCube(1100,650,100,100,100,'#3CAEA3');
+			drawCube(1000,700,100,100,100,'#3CAEA3');
+
+			drawCube(1400,400,100,100,100,'#3CAEA3');
+			drawCube(1300,450,100,100,100,'#3CAEA3');
+			drawCube(1200,500,100,100,100,'#3CAEA3');
+			drawCube(1100,550,100,100,100,'#3CAEA3');
+			drawCube(1000,600,100,100,100,'#3CAEA3');
+
+			
+			//fourth group
+			drawCube(1500,850,100,100,100,'#F6D55C');
+			drawCube(1400,900,100,100,100,'#F6D55C');
+			drawCube(1300,950,100,100,100,'#F6D55C');
+			drawCube(1200,1000,100,100,100,'#F6D55C');
+			drawCube(1100,1050,100,100,100,'#F6D55C');
+
+			drawCube(1500,750,100,100,100,'#F6D55C');
+			drawCube(1400,800,100,100,100,'#F6D55C');
+			drawCube(1300,850,100,100,100,'#F6D55C');
+			drawCube(1200,900,100,100,100,'#F6D55C');
+			drawCube(1100,950,100,100,100,'#F6D55C');			
+
+			drawCube(1500,650,100,100,100,'#F6D55C');
+			drawCube(1400,700,100,100,100,'#F6D55C');
+			drawCube(1300,750,100,100,100,'#F6D55C');
+			drawCube(1200,800,100,100,100,'#F6D55C');
+			drawCube(1100,850,100,100,100,'#F6D55C');			
+			
+			drawCube(1500,550,100,100,100,'#F6D55C');
+			drawCube(1400,600,100,100,100,'#F6D55C');
+			drawCube(1300,650,100,100,100,'#F6D55C');
+			drawCube(1200,700,100,100,100,'#F6D55C');
+			drawCube(1100,750,100,100,100,'#F6D55C');	
+
+			drawCube(1500,450,100,100,100,'#F6D55C');
+			drawCube(1400,500,100,100,100,'#F6D55C');
+			drawCube(1300,550,100,100,100,'#F6D55C');
+			drawCube(1200,600,100,100,100,'#F6D55C');
+			drawCube(1100,650,100,100,100,'#F6D55C');				
+			
+			//fifth group
+			drawCube(1600,900,100,100,100,'#ED553B');
+			drawCube(1500,950,100,100,100,'#ED553B');
+			drawCube(1400,1000,100,100,100,'#ED553B');
+			drawCube(1300,1050,100,100,100,'#ED553B');
+			drawCube(1200,1100,100,100,100,'#ED553B');
+
+			drawCube(1600,800,100,100,100,'#ED553B');
+			drawCube(1500,850,100,100,100,'#ED553B');
+			drawCube(1400,900,100,100,100,'#ED553B');
+			drawCube(1300,950,100,100,100,'#ED553B');
+			drawCube(1200,1000,100,100,100,'#ED553B');			
+
+			drawCube(1600,700,100,100,100,'#ED553B');
+			drawCube(1500,750,100,100,100,'#ED553B');
+			drawCube(1400,800,100,100,100,'#ED553B');
+			drawCube(1300,850,100,100,100,'#ED553B');
+			drawCube(1200,900,100,100,100,'#ED553B');	
+			
+			drawCube(1600,600,100,100,100,'#ED553B');
+			drawCube(1500,650,100,100,100,'#ED553B');
+			drawCube(1400,700,100,100,100,'#ED553B');
+			drawCube(1300,750,100,100,100,'#ED553B');
+			drawCube(1200,800,100,100,100,'#ED553B');
+
+			drawCube(1600,500,100,100,100,'#ED553B');
+			drawCube(1500,550,100,100,100,'#ED553B');
+			drawCube(1400,600,100,100,100,'#ED553B');
+			drawCube(1300,650,100,100,100,'#ED553B');
+			drawCube(1200,700,100,100,100,'#ED553B');				
+			//requestAnimationFrame(draw);*/
+		}
+		//draw();
+
+		// Colour adjustment function
+		// Nicked from http://stackoverflow.com/questions/5560248
+		function shadeColor(color, percent) {
+		  color = color.substr(1);
+		  var num = parseInt(color, 16),
+			amt = Math.round(2.55 * percent),
+			R = (num >> 16) + amt,
+			G = (num >> 8 & 0x00FF) + amt,
+			B = (num & 0x0000FF) + amt;
+		  return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+		}
+
+		// Draw a cube to the specified specs
+		function drawCube(x, y, wx, wy, h, color) {
+			
+			x=(x*0.5); y=(y*0.5); wx=wx*0.5; wy=wy*0.5; h=h*0.5;
+			
+			ctx.globalAlpha = 0.90;
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x - wx, y - wx * 0.5);
+			ctx.lineTo(x - wx, y - h - wx * 0.5);
+			ctx.lineTo(x, y - h * 1);
+			ctx.closePath();
+			ctx.fillStyle = shadeColor(color, -10);
+			ctx.strokeStyle = color;
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x + wy, y - wy * 0.5);
+			ctx.lineTo(x + wy, y - h - wy * 0.5);
+			ctx.lineTo(x, y - h * 1);
+			ctx.closePath();
+			ctx.fillStyle = shadeColor(color, 10);
+			ctx.strokeStyle = shadeColor(color, 50);
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.moveTo(x, y - h);
+			ctx.lineTo(x - wx, y - h - wx * 0.5);
+			ctx.lineTo(x - wx + wy, y - h - (wx * 0.5 + wy * 0.5));
+			ctx.lineTo(x + wy, y - h - wy * 0.5);
+			ctx.closePath();
+			ctx.fillStyle = shadeColor(color, 20);
+			ctx.strokeStyle = shadeColor(color, 60);
+			ctx.stroke();
+			ctx.fill();
+		  }
+		
+	</script>
+</head>
+<body onload="renderCube();">
+
+ </body>
+ </html>

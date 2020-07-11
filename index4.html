@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body {
+				background-color: #fff;
+				color: #444;
+			}
+			a {
+				color: #08f;
+			}
+		</style>
+		<script src="scripts/jquery-3.5.1.min.js"></script>
+	</head>
+	<body>
+	<div id="container"></div>
+
+		<script src="scripts/three.js"></script>
+		<script src="scripts/TrackballControls.js"></script>
+		<script src="scripts/stats.module.js"></script>
+		
+		<script>
+			var container, stats;
+			var camera, controls, scene, renderer;
+			var highlightBox;
+
+			var mouse = new THREE.Vector2();
+			var offset = new THREE.Vector3( 10, 10, 10 );
+			init();
+			animate();
+
+
+
+			function init() {
+
+				container = document.getElementById( "container" );
+
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z = 5;
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xffffff );
+
+				scene.add( new THREE.AmbientLight( 0x555555 ) );
+
+				var light = new THREE.SpotLight( 0xffffff, 1.5 );
+				light.position.set( 0, 500, 2000 );
+				scene.add( light );
+
+				var defaultMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true, vertexColors: true, shininess: 0	} );
+
+				function applyVertexColors( geometry, color ) {
+
+					var position = geometry.attributes.position;
+					var colors = [];
+
+					for ( var i = 0; i < position.count; i ++ ) {
+
+						colors.push( color.r, color.g, color.b );
+
+					}
+
+					geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+
+				}
+
+				var matrix = new THREE.Matrix4();
+				var quaternion = new THREE.Quaternion();
+				var color = new THREE.Color();
+
+				for ( var i = 0; i < 10; i ++ ) {
+
+					var geometry = new THREE.BoxBufferGeometry();
+
+					var position = new THREE.Vector3();
+					position.x = 2000;//Math.random() * 10000 - 5000;
+					position.y = 2000;//Math.random() * 6000 - 3000;
+					position.z = 2000;//Math.random() * 8000 - 4000;
+
+					var rotation = new THREE.Euler();
+					rotation.x = 0;
+					rotation.y = 0;
+					rotation.z = 0;
+					//console.log(Math.random() * 10000 - 5000);
+					var scale = new THREE.Vector3();
+					scale.x = 300;//Math.random() * 200 + 100;
+					scale.y = 300;//Math.random() * 200 + 100;
+					scale.z = 300;//Math.random() * 200 + 100;
+
+					quaternion.setFromEuler( rotation );
+					matrix.compose( position, quaternion, scale );
+
+					geometry.applyMatrix4( matrix );
+
+					// give the geometry's vertices a random color, to be displayed
+
+					applyVertexColors( geometry, color.setHex( 0xcc0000 ) );
+
+
+					var object = new THREE.Mesh( geometry , defaultMaterial );
+					scene.add( object );					
+
+					geometry = geometry.clone();
+
+					// give the geometry's vertices a color corresponding to the "id"
+
+					applyVertexColors( geometry, color.setHex( i ) );
+
+
+				}
+
+				//var objects = new THREE.Mesh( BufferGeometryUtils.mergeBufferGeometries( geometriesDrawn ), defaultMaterial );
+				//scene.add( objects );
+
+				highlightBox = new THREE.Mesh(
+					new THREE.BoxBufferGeometry(),
+					new THREE.MeshLambertMaterial( { color: 0xffff00 }
+					) );
+				scene.add( highlightBox );
+
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				controls.rotateSpeed = 1.0;
+				controls.zoomSpeed = 1.2;
+				controls.panSpeed = 0.8;
+				controls.noZoom = true;
+				controls.noPan = false;
+				controls.staticMoving = true;
+				controls.dynamicDampingFactor = 0.3;
+				
+				renderer.domElement.addEventListener( 'mousemove', onMouseMove );
+
+			}
+
+			//
+
+			function onMouseMove( e ) {
+
+				mouse.x = e.clientX;
+				mouse.y = e.clientY;
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+
+			}
+
+			function render() {
+
+				controls.update();
+				renderer.setRenderTarget( null );
+				renderer.render( scene, camera );
+
+			}			
+		</script>
+	</body>
+</html>
