@@ -25,7 +25,7 @@
 			<div>
 				<table cellspacing="1" cellpadding="1" border="1" width="400" height="200">
 					<tr>
-						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">&nbsp;</td>
+						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">Aspect</td>
 						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;" colspan="2">Segmentation</td>
 						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;" colspan="2">Optimization</td>
 					</tr>
@@ -33,22 +33,22 @@
 						<td style="background-color:#20639B !important;color:#FFFFFF;padding:5px;">Pricing</td>
 						<td>
 							<select name="series1x" id="series1x" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1" >Mass</option>
 							  <option value="2">Macro</option>
 							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
+							  <option value="4">Person Minimal</option>
+							  <option value="5">Person Full</option>
 							</select>
 							
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
 							<select name="series1y" id="series1y" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
 							  <option value="3">Stage 3</option>
 							  <option value="4">Stage 4</option>
+							  <option value="5">Stage 5</option>
 							</select>				
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
@@ -57,21 +57,21 @@
 						<td style="background-color:#3CAEA3 !important;color:#FFFFFF;padding:5px;">Recommendation</td>
 						<td>
 							<select name="series2x" id="series2x" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Mass</option>
 							  <option value="2">Macro</option>
 							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
+							  <option value="4">Person Minimal</option>
+							  <option value="5">Person Full</option>
 							</select>			
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
 							<select name="series2y" id="series2y" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
 							  <option value="3">Stage 3</option>
 							  <option value="4">Stage 4</option>
+							  <option value="5">Stage 5</option>
 							</select>				
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
@@ -80,21 +80,21 @@
 						<td style="background-color:#F6D55C !important;color:#FFFFFF;padding:5px;">Offers</td>
 						<td>
 							<select name="series3x" id="series3x" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Mass</option>
 							  <option value="2">Macro</option>
 							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
+							  <option value="4">Person Minimal</option>
+							  <option value="5">Person Full</option>
 							</select>				
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
 							<select name="series3y" id="series3y" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
 							  <option value="3">Stage 3</option>
 							  <option value="4">Stage 4</option>
+							  <option value="5">Stage 5</option>
 							</select>				
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
@@ -103,21 +103,21 @@
 						<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Bundles</td>
 						<td>
 							<select name="series4x" id="series4x" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Mass</option>
 							  <option value="2">Macro</option>
 							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
+							  <option value="4">Person Minimal</option>
+							  <option value="5">Person Full</option>
 							</select>				
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
 							<select name="series4y" id="series4y" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
 							  <option value="3">Stage 3</option>
 							  <option value="4">Stage 4</option>
+							  <option value="5">Stage 5</option>
 							</select>	
 						</td>
 						<td><img src="images/info.png" style="width:20px;"/></td>
@@ -146,14 +146,14 @@
 				</table>
 			</div>
 			<div>
-				<div style="width:50%;float:left;text-align:left;padding:5%;font-size:30px;background-color:#D3D3D3;">Score:</div>
+				<div style="width:50%;float:left;text-align:left;padding:5%;font-size:30px;background-color:#D3D3D3;">Your score:</div>
 				<div id="percentagePlaceHolder" style="text-align:right;padding:5%;width:29.9%;float:left;font-weight:bold;font-size:30px;background-color:#D3D3D3;"></div>
 			</div>
 		</div>
 		<div id="rightDockedDiv" style="position:absolute;width:350px;height:99%;border-left:1px solid #D3D3D3;"> 
 			<div style="width:100%;height:25%;border-bottom:1px solid #D3D3D3;">
 				<div style="float:left;width:40%;height:70%;border:0px solid #D3D3D3;padding:10px;">
-					Pricing strategy: <p id="pricingStrategy" style="font-weight:bold;"></p>
+					Pricing strategy: <p id="pricingStrategy"></p>
 				</div>
 				<div style="padding:10px;">
 					<div id="pricingRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
@@ -256,8 +256,8 @@
 				var seriesDCubes = document.getElementById("series4x").value * document.getElementById("series4y").value;
 				//var seriesECubes = document.getElementById("series5x").value * document.getElementById("series5y").value;
 				//var totalPercent = ((seriesACubes + seriesBCubes + seriesCCubes + seriesDCubes + seriesECubes)/125)*100;
-				var totalPercent = ((seriesACubes + seriesBCubes + seriesCCubes + seriesDCubes)/64)*100;
-				document.getElementById("percentagePlaceHolder").innerText = Math.round((totalPercent + Number.EPSILON) * 100)/100 ;
+				var totalPercent = ((seriesACubes + seriesBCubes + seriesCCubes + seriesDCubes)/100)*100;
+				document.getElementById("percentagePlaceHolder").innerText = Math.round((totalPercent + Number.EPSILON) * 100)/100 + "%";
 				//alert(totalPercent);
 			}
 
@@ -281,6 +281,10 @@
 				return cube;				
 			}
 			
+
+			
+			var groupSeriesFrame = new THREE.Group();
+			var masterCubeFrame = new THREE.Group();
 			var masterSkeleton = new THREE.Group();
 			var groupSeries1 = new THREE.Group();
 			var groupSeries2 = new THREE.Group();
@@ -291,11 +295,71 @@
 			function drawMasterSkeleton(){
 				scene.remove(masterSkeleton);
 				masterSkeleton = new THREE.Group();
-				var geometry = new THREE.BoxBufferGeometry( 4, 4, 4 );
+				var geometry = new THREE.BoxBufferGeometry( 4, 5, 5 );
 				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, transparent:true, wireframe:true, opacity:0.01} );
-				masterSkeleton.add(createFrameBlock(1.5,1.5,1.5,geometry,material));	
+				masterSkeleton.add(createFrameBlock(1.5,2,2,geometry,material));	
 				scene.add(masterSkeleton);				
 			}
+			
+			function drawSkeleton(){
+				scene.remove(groupSeriesFrame);
+				groupSeriesFrame = new THREE.Group();
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, transparent:true, opacity:0.01} );				
+				
+				var layera1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
+				var layera2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
+				var layera3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
+				var layera4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
+				var layera5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];
+				
+				var layerb1 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
+				var layerb2 =[[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,1,4]];
+				var layerb3 =[[1,2,0],[1,2,1],[1,2,2],[1,2,3],[1,2,4]];
+				var layerb4 =[[1,3,0],[1,3,1],[1,3,2],[1,3,3],[1,3,4]];
+				var layerb5 =[[1,4,0],[1,4,1],[1,4,2],[1,4,3],[1,4,4]];
+
+				var layerc1 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
+				var layerc2 =[[2,1,0],[2,1,1],[2,1,2],[2,1,3],[2,1,4]];
+				var layerc3 =[[2,2,0],[2,2,1],[2,2,2],[2,2,3],[2,2,4]];
+				var layerc4 =[[2,3,0],[2,3,1],[2,3,2],[2,3,3],[2,3,4]];
+				var layerc5 =[[2,4,0],[2,4,1],[2,4,2],[2,4,3],[2,4,4]];				
+
+				var layerd1 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
+				var layerd2 =[[3,1,0],[3,1,1],[3,1,2],[3,1,3],[3,1,4]];
+				var layerd3 =[[3,2,0],[3,2,1],[3,2,2],[3,2,3],[3,2,4]];
+				var layerd4 =[[3,3,0],[3,3,1],[3,3,2],[3,3,3],[3,3,4]];
+				var layerd5 =[[3,4,0],[3,4,1],[3,4,2],[3,4,3],[3,4,4]];
+
+				var layere1 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
+				var layere2 =[[4,1,0],[4,1,1],[4,1,2],[4,1,3],[4,1,4]];
+				var layere3 =[[4,2,0],[4,2,1],[4,2,2],[4,2,3],[4,2,4]];
+				var layere4 =[[4,3,0],[4,3,1],[4,3,2],[4,3,3],[4,3,4]];
+				var layere5 =[[4,4,0],[4,4,1],[4,4,2],[4,4,3],[4,4,4]];				
+				
+				var layers = [layera1,layera2,layera3,layera4,layera5,
+							layerb1,layerb2,layerb3,layerb4,layerb5,
+							layerc1,layerc2,layerc3,layerc4,layerc5,
+							layerd1,layerd2,layerd3,layerd4,layerd5,
+							layere1,layere2,layere3,layere4,layere5];
+				
+				for(var i=0;i<=(24);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(4);j++){
+						groupSeriesFrame.add(createFrameBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+					}
+				}
+				scene.add(groupSeriesFrame);			
+			}			
+
+			function drawMasterCube(){
+				scene.remove(masterCubeFrame);
+				masterCubeFrame = new THREE.Group();
+				var geometry = new THREE.BoxBufferGeometry( 5, 5, 5 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, wireframe:true, opacity:0.01} );				
+				masterCubeFrame.add(createFrameBlock(2,2,2,geometry,material));
+				scene.add(masterCubeFrame);			
+			}	
 			
 			function drawSeries1(){
 			
@@ -306,37 +370,31 @@
 						list[a].className = "componentSquare";
 					}
 				}
-
+				console.log("-----------------");
 				scene.remove(groupSeries1);
 				groupSeries1 = new THREE.Group();
 				var x = document.getElementById("series1x").value;
 				var y = document.getElementById("series1y").value;
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x20639B, transparent:true, opacity:0.9} );				
 				
-				var pricingStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
-				document.getElementById("pricingStrategy").innerText = pricingStrategyArr[Math.min(x,y)];
+				var layer1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
+				var layer2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
+				var layer3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
+				var layer4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
+				var layer5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
 				
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0x20639B, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
-					var layer2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
-					var layer3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
-					var layer4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
-					var layer5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries1.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-							var tempi= (currentLayer[j][1]+1);
-							var tempj= (currentLayer[j][2]+1);
-							document.getElementById("component"+tempi+tempj).className = "componentSquareHilighted";
-						}
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries1.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+						var tempi= (currentLayer[j][1]+1);
+						var tempj= (currentLayer[j][2]+1);
+						document.getElementById("component"+tempi+tempj).className = "componentSquareHilighted";
 					}
-					scene.add(groupSeries1);
 				}
+				scene.add(groupSeries1);
 				calculatePercentage();
 			}
 
@@ -346,25 +404,23 @@
 				groupSeries2 = new THREE.Group();
 				var x = document.getElementById("series2x").value;
 				var y = document.getElementById("series2y").value;
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0x3CAEA3, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
-					var layer2 =[[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,1,4]];
-					var layer3 =[[1,2,0],[1,2,1],[1,2,2],[1,2,3],[1,2,4]];
-					var layer4 =[[1,3,0],[1,3,1],[1,3,2],[1,3,3],[1,3,4]];
-					var layer5 =[[1,4,0],[1,4,1],[1,4,2],[1,4,3],[1,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries2.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-						}
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0x3CAEA3, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
+				var layer2 =[[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,1,4]];
+				var layer3 =[[1,2,0],[1,2,1],[1,2,2],[1,2,3],[1,2,4]];
+				var layer4 =[[1,3,0],[1,3,1],[1,3,2],[1,3,3],[1,3,4]];
+				var layer5 =[[1,4,0],[1,4,1],[1,4,2],[1,4,3],[1,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries2.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
 					}
-					scene.add(groupSeries2);
 				}
+				scene.add(groupSeries2);
 				calculatePercentage();
 			}
 
@@ -374,25 +430,23 @@
 				groupSeries3 = new THREE.Group();
 				var x = document.getElementById("series3x").value;
 				var y = document.getElementById("series3y").value;
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0xF6D55C, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
-					var layer2 =[[2,1,0],[2,1,1],[2,1,2],[2,1,3],[2,1,4]];
-					var layer3 =[[2,2,0],[2,2,1],[2,2,2],[2,2,3],[2,2,4]];
-					var layer4 =[[2,3,0],[2,3,1],[2,3,2],[2,3,3],[2,3,4]];
-					var layer5 =[[2,4,0],[2,4,1],[2,4,2],[2,4,3],[2,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries3.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-						}
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xF6D55C, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
+				var layer2 =[[2,1,0],[2,1,1],[2,1,2],[2,1,3],[2,1,4]];
+				var layer3 =[[2,2,0],[2,2,1],[2,2,2],[2,2,3],[2,2,4]];
+				var layer4 =[[2,3,0],[2,3,1],[2,3,2],[2,3,3],[2,3,4]];
+				var layer5 =[[2,4,0],[2,4,1],[2,4,2],[2,4,3],[2,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries3.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
 					}
-					scene.add(groupSeries3);
 				}
+				scene.add(groupSeries3);
 				calculatePercentage();
 			}
 
@@ -402,25 +456,23 @@
 				groupSeries4 = new THREE.Group();
 				var x = document.getElementById("series4x").value;
 				var y = document.getElementById("series4y").value;
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
-					var layer2 =[[3,1,0],[3,1,1],[3,1,2],[3,1,3],[3,1,4]];
-					var layer3 =[[3,2,0],[3,2,1],[3,2,2],[3,2,3],[3,2,4]];
-					var layer4 =[[3,3,0],[3,3,1],[3,3,2],[3,3,3],[3,3,4]];
-					var layer5 =[[3,4,0],[3,4,1],[3,4,2],[3,4,3],[3,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries4.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-						}
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
+				var layer2 =[[3,1,0],[3,1,1],[3,1,2],[3,1,3],[3,1,4]];
+				var layer3 =[[3,2,0],[3,2,1],[3,2,2],[3,2,3],[3,2,4]];
+				var layer4 =[[3,3,0],[3,3,1],[3,3,2],[3,3,3],[3,3,4]];
+				var layer5 =[[3,4,0],[3,4,1],[3,4,2],[3,4,3],[3,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries4.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
 					}
-					scene.add(groupSeries4);
-				}	
+				}
+				scene.add(groupSeries4);
 				calculatePercentage();
 			}
 
@@ -430,25 +482,23 @@
 				groupSeries5 = new THREE.Group();
 				var x = document.getElementById("series5x").value;
 				var y = document.getElementById("series5y").value;
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
-					var layer2 =[[4,1,0],[4,1,1],[4,1,2],[4,1,3],[4,1,4]];
-					var layer3 =[[4,2,0],[4,2,1],[4,2,2],[4,2,3],[4,2,4]];
-					var layer4 =[[4,3,0],[4,3,1],[4,3,2],[4,3,3],[4,3,4]];
-					var layer5 =[[4,4,0],[4,4,1],[4,4,2],[4,4,3],[4,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries5.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-						}
+				var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
+				
+				var layer1 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
+				var layer2 =[[4,1,0],[4,1,1],[4,1,2],[4,1,3],[4,1,4]];
+				var layer3 =[[4,2,0],[4,2,1],[4,2,2],[4,2,3],[4,2,4]];
+				var layer4 =[[4,3,0],[4,3,1],[4,3,2],[4,3,3],[4,3,4]];
+				var layer5 =[[4,4,0],[4,4,1],[4,4,2],[4,4,3],[4,4,4]];
+				var layers = [layer1,layer2,layer3,layer4,layer5];
+				
+				for(var i=0;i<=(y-1);i++){
+					var currentLayer = layers[i];
+					for(var j=0;j<=(x-1);j++){
+						groupSeries5.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
 					}
-					scene.add(groupSeries5);
 				}
+				scene.add(groupSeries5);
 				calculatePercentage();
 			}
 			
