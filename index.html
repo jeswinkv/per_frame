@@ -20,11 +20,13 @@
 			.componentOffSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #F6D55C; opacity:0.8;}
 			.componentBundSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #ED553B; opacity:0.8;}
 		</style>
-		<script src="scripts/jquery-3.5.1.min.js"></script>
+		<link rel="stylesheet" href="css/reveal.css" />
+		<script src="scripts/jquery-1.4.4.min.js"></script>
+		<script src="scripts/jquery.reveal.js"></script>
 	</head>
 	<body style="font-family: Century Gothic, sans-serif;" onload="dockRightDiv();drawSeries1();drawSeries2();drawSeries3();drawSeries4();drawMasterSkeleton();">
 		<div>
-		<div style="position:absolute;float:left;width:375px;height:100%;border-right:1px solid #D3D3D3;box-shadow: 7px 0px 10px -9px #000000;">
+		<div style="position:absolute;float:left;width:375px;height:100%;border-right:0px solid #D3D3D3;box-shadow: 7px 0px 10px -9px #000000;">
 			<div style="width:96%;padding:2%;border:0px solid red;text-align:center;margin-bottom:20px;font-size:30px;text-decoration: underline;">
 				IBS Personalization Maturity Assessment Framework
 			</div>
@@ -145,7 +147,7 @@
 				</table>
 			</div>
 			<div style="width:90%;text-align:right;padding:5%;font-size:14;">
-				<a href="#">More information</a>
+				<a href="#" data-reveal-id="myModal" data-animation="fade">More information</a>
 			</div>
 			<div style="width:100%;height:50px;">&nbsp;</div>
 			<div>
@@ -154,10 +156,10 @@
 			</div>
 		</div>
 		<div><img style="position:absolute;background-color:transparent;width:100px;left:400px;" src="images/360_2.png"/></div>
-		<div id="rightDockedDiv" style="position:absolute;width:375px;height:99%;border-left:1px solid #D3D3D3;box-shadow: -7px 0px 10px -9px #000000;"> 
-			<div style="width:100%;height:25%;border-bottom:0px solid #D3D3D3;">
+		<div id="rightDockedDiv" style="position:absolute;width:375px;height:99%;border-left:0px solid #D3D3D3;box-shadow: -7px 0px 10px -9px #000000;"> 
+			<div style="width:375px;height:25%;border-bottom:0px solid #D3D3D3;">
 				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					Pricing strategy: <p id="pricingStrategy" style="font-weight:bold;"></p>
+					Pricing strategy: <p id="pricingStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;"></p>
 				</div>
 				<div style="padding:10px;">
 					<div id="pricingRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
@@ -179,7 +181,7 @@
 			</div>
 			<div style="width:100%;height:25%;">
 				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					Recommendation strategy: <p id="recommendationStrategy" style="font-weight:bold;"></p>
+					Recommendation strategy: <p id="recommendationStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;""></p>
 				</div>
 				<div style="padding:10px;">
 					<div id="recommendationRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
@@ -201,7 +203,7 @@
 			</div> 
 			<div style="width:100%;height:25%;">
 				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					Offer strategy: <p id="offerStrategy" style="font-weight:bold;"></p>
+					Offer strategy: <p id="offerStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;""></p>
 				</div>
 				<div style="padding:10px;">
 					<div id="offerRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
@@ -223,7 +225,7 @@
 			</div> 
 			<div style="width:100%;height:25%;">
 				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					Bundle strategy: <p id="bundleStrategy" style="font-weight:bold;"></p>
+					Bundle strategy: <p id="bundleStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;""></p>
 				</div>
 				<div style="padding:10px;">
 					<div id="bundleRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
@@ -245,6 +247,10 @@
 			</div> 				
 			</div> 			
 		</div>
+		<div id="myModal" class="reveal-modal" style="width:610px;background-color:#ffffff;">
+		  <img src="images/framework_2.png" style="width:600px;"/>
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>		
 		</div>
 
 		<script src="scripts/three.js"></script>
