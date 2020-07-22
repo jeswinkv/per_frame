@@ -16,23 +16,30 @@
 			canvas { display: block; }
 			.componentSquare{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #FFFFFF;}
 			.componentSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #20639B; opacity:0.8;}
+			.componentRecSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #3CAEA3; opacity:0.8;}
+			.componentOffSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #F6D55C; opacity:0.8;}
+			.componentBundSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #ED553B; opacity:0.8;}
 		</style>
 		<script src="scripts/jquery-3.5.1.min.js"></script>
 	</head>
 	<body style="font-family: Century Gothic, sans-serif;" onload="dockRightDiv();drawSeries1();drawSeries2();drawSeries3();drawSeries4();drawMasterSkeleton();">
 		<div>
-		<div style="position:absolute;float:left;">
-			<div>
-				<table cellspacing="1" cellpadding="1" border="1" width="400" height="200">
+		<div style="position:absolute;float:left;width:375px;height:100%;border-right:1px solid #D3D3D3;box-shadow: 7px 0px 10px -9px #000000;">
+			<div style="width:96%;padding:2%;border:0px solid red;text-align:center;margin-bottom:20px;font-size:30px;text-decoration: underline;">
+				IBS Personalization Maturity Assessment Framework
+			</div>
+			<div style="width:100%;height:50px;">&nbsp;</div>
+			<div style="align:centre;text-align:centre;width:90%;border:0px solid red;padding-left:12px;">
+				<table cellspacing="1" cellpadding="0" border="0" height="200" style="width:350px !important;font-size:14;">
 					<tr>
-						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;">&nbsp;</td>
-						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;" colspan="2">Segmentation</td>
-						<td style="background-color:#0A0A0A !important;color:#FFFFFF;font-weight:bold;padding:5px;" colspan="2">Optimization</td>
+						<td style="font-weight:bold;padding:5px;">&nbsp;</td>
+						<td style="font-weight:bold;padding:5px;">Segmentation</td>
+						<td style="font-weight:bold;padding:5px;">Optimization</td>
 					</tr>
 					<tr>
 						<td style="background-color:#20639B !important;color:#FFFFFF;padding:5px;">Pricing</td>
 						<td>
-							<select name="series1x" id="series1x" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series1x" id="series1x" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1" >Mass</option>
 							  <option value="2">Macro</option>
@@ -41,9 +48,8 @@
 							</select>
 							
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
-							<select name="series1y" id="series1y" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series1y" id="series1y" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
@@ -51,12 +57,11 @@
 							  <option value="4">Stage 4</option>
 							</select>				
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 					</tr>
 					<tr>
 						<td style="background-color:#3CAEA3 !important;color:#FFFFFF;padding:5px;">Recommendation</td>
 						<td>
-							<select name="series2x" id="series2x" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series2x" id="series2x" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Mass</option>
 							  <option value="2">Macro</option>
@@ -64,9 +69,8 @@
 							  <option value="4">Person</option>
 							</select>			
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
-							<select name="series2y" id="series2y" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series2y" id="series2y" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
@@ -74,12 +78,11 @@
 							  <option value="4">Stage 4</option>
 							</select>				
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 					</tr>
 					<tr>
 						<td style="background-color:#F6D55C !important;color:#FFFFFF;padding:5px;">Offers</td>
 						<td>
-							<select name="series3x" id="series3x" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series3x" id="series3x" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Mass</option>
 							  <option value="2">Macro</option>
@@ -87,9 +90,8 @@
 							  <option value="4">Person</option>
 							</select>				
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
-							<select name="series3y" id="series3y" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series3y" id="series3y" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
@@ -97,12 +99,11 @@
 							  <option value="4">Stage 4</option>
 							</select>				
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 					</tr>
 					<tr>
 						<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Bundles</td>
 						<td>
-							<select name="series4x" id="series4x" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series4x" id="series4x" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Mass</option>
 							  <option value="2">Macro</option>
@@ -110,9 +111,8 @@
 							  <option value="4">Person</option>
 							</select>				
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 						<td>
-							<select name="series4y" id="series4y" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
+							<select name="series4y" id="series4y" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
 							  <option value="0" >None</option>
 							  <option value="1">Stage 1</option>
 							  <option value="2">Stage 2</option>
@@ -120,7 +120,6 @@
 							  <option value="4">Stage 4</option>
 							</select>	
 						</td>
-						<td><img src="images/info.png" style="width:20px;"/></td>
 					</tr>	
 					<!--<tr>
 						<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Others</td>
@@ -145,54 +144,105 @@
 					</tr>-->	
 				</table>
 			</div>
+			<div style="width:90%;text-align:right;padding:5%;font-size:14;">
+				<a href="#">More information</a>
+			</div>
+			<div style="width:100%;height:50px;">&nbsp;</div>
 			<div>
-				<div style="width:50%;float:left;text-align:left;padding:5%;font-size:30px;background-color:#D3D3D3;">Score:</div>
-				<div id="percentagePlaceHolder" style="text-align:right;padding:5%;width:29.9%;float:left;font-weight:bold;font-size:30px;background-color:#D3D3D3;"></div>
+				<div style="width:50%;float:left;text-align:left;padding:5%;font-size:30px;">Score:</div>
+				<div id="percentagePlaceHolder" style="text-align:right;padding:5%;width:29.9%;float:left;font-weight:bold;font-size:30px;"></div>
 			</div>
 		</div>
-		<div id="rightDockedDiv" style="position:absolute;width:350px;height:99%;border-left:1px solid #D3D3D3;"> 
-			<div style="width:100%;height:25%;border-bottom:1px solid #D3D3D3;">
-				<div style="float:left;width:40%;height:70%;border:0px solid #D3D3D3;padding:10px;">
+		<div><img style="position:absolute;background-color:transparent;width:100px;left:400px;" src="images/360_2.png"/></div>
+		<div id="rightDockedDiv" style="position:absolute;width:375px;height:99%;border-left:1px solid #D3D3D3;box-shadow: -7px 0px 10px -9px #000000;"> 
+			<div style="width:100%;height:25%;border-bottom:0px solid #D3D3D3;">
+				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
 					Pricing strategy: <p id="pricingStrategy" style="font-weight:bold;"></p>
 				</div>
 				<div style="padding:10px;">
 					<div id="pricingRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
-						<div id="component51" class="componentSquare"></div>
-						<div id="component52" class="componentSquare"></div>
-						<div id="component53" class="componentSquare"></div>
-						<div id="component54" class="componentSquare"></div>
-						<div id="component55" class="componentSquare"></div>						
-						<div id="component41" class="componentSquare"></div>
-						<div id="component42" class="componentSquare"></div>
-						<div id="component43" class="componentSquare"></div>
-						<div id="component44" class="componentSquare"></div>
-						<div id="component45" class="componentSquare"></div>	
-						<div id="component31" class="componentSquare"></div>
-						<div id="component32" class="componentSquare"></div>
-						<div id="component33" class="componentSquare"></div>
-						<div id="component34" class="componentSquare"></div>
-						<div id="component35" class="componentSquare"></div>	
-						<div id="component21" class="componentSquare"></div>
-						<div id="component22" class="componentSquare"></div>
-						<div id="component23" class="componentSquare"></div>
-						<div id="component24" class="componentSquare"></div>
-						<div id="component25" class="componentSquare"></div>	
-						<div id="component11" class="componentSquare"></div>
-						<div id="component12" class="componentSquare"></div>
-						<div id="component13" class="componentSquare"></div>
-						<div id="component14" class="componentSquare"></div>
+						<div id="component51" class="componentSquare"></div><div id="component52" class="componentSquare"></div>
+						<div id="component53" class="componentSquare"></div><div id="component54" class="componentSquare"></div>
+						<div id="component55" class="componentSquare"></div><div id="component41" class="componentSquare"></div>
+						<div id="component42" class="componentSquare"></div><div id="component43" class="componentSquare"></div>
+						<div id="component44" class="componentSquare"></div><div id="component45" class="componentSquare"></div>
+						<div id="component31" class="componentSquare"></div><div id="component32" class="componentSquare"></div>
+						<div id="component33" class="componentSquare"></div><div id="component34" class="componentSquare"></div>
+						<div id="component35" class="componentSquare"></div><div id="component21" class="componentSquare"></div>
+						<div id="component22" class="componentSquare"></div><div id="component23" class="componentSquare"></div>
+						<div id="component24" class="componentSquare"></div><div id="component25" class="componentSquare"></div>
+						<div id="component11" class="componentSquare"></div><div id="component12" class="componentSquare"></div>
+						<div id="component13" class="componentSquare"></div><div id="component14" class="componentSquare"></div>
 						<div id="component15" class="componentSquare"></div>							
 					</div>
 				</div>
 			</div>
 			<div style="width:100%;height:25%;">
-				
+				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
+					Recommendation strategy: <p id="recommendationStrategy" style="font-weight:bold;"></p>
+				</div>
+				<div style="padding:10px;">
+					<div id="recommendationRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
+						<div id="recommend51" class="componentSquare"></div><div id="recommend52" class="componentSquare"></div>
+						<div id="recommend53" class="componentSquare"></div><div id="recommend54" class="componentSquare"></div>
+						<div id="recommend55" class="componentSquare"></div><div id="recommend41" class="componentSquare"></div>
+						<div id="recommend42" class="componentSquare"></div><div id="recommend43" class="componentSquare"></div>
+						<div id="recommend44" class="componentSquare"></div><div id="recommend45" class="componentSquare"></div>
+						<div id="recommend31" class="componentSquare"></div><div id="recommend32" class="componentSquare"></div>
+						<div id="recommend33" class="componentSquare"></div><div id="recommend34" class="componentSquare"></div>
+						<div id="recommend35" class="componentSquare"></div><div id="recommend21" class="componentSquare"></div>
+						<div id="recommend22" class="componentSquare"></div><div id="recommend23" class="componentSquare"></div>
+						<div id="recommend24" class="componentSquare"></div><div id="recommend25" class="componentSquare"></div>
+						<div id="recommend11" class="componentSquare"></div><div id="recommend12" class="componentSquare"></div>
+						<div id="recommend13" class="componentSquare"></div><div id="recommend14" class="componentSquare"></div>
+						<div id="recommend15" class="componentSquare"></div>		 					
+					</div>
+				</div>				
 			</div> 
 			<div style="width:100%;height:25%;">
-				
+				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
+					Offer strategy: <p id="offerStrategy" style="font-weight:bold;"></p>
+				</div>
+				<div style="padding:10px;">
+					<div id="offerRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
+						<div id="offer51" class="componentSquare"></div><div id="offer52" class="componentSquare"></div>
+						<div id="offer53" class="componentSquare"></div><div id="offer54" class="componentSquare"></div>
+						<div id="offer55" class="componentSquare"></div><div id="offer41" class="componentSquare"></div>
+						<div id="offer42" class="componentSquare"></div><div id="offer43" class="componentSquare"></div>
+						<div id="offer44" class="componentSquare"></div><div id="offer45" class="componentSquare"></div>
+						<div id="offer31" class="componentSquare"></div><div id="offer32" class="componentSquare"></div>
+						<div id="offer33" class="componentSquare"></div><div id="offer34" class="componentSquare"></div>
+						<div id="offer35" class="componentSquare"></div><div id="offer21" class="componentSquare"></div>
+						<div id="offer22" class="componentSquare"></div><div id="offer23" class="componentSquare"></div>
+						<div id="offer24" class="componentSquare"></div><div id="offer25" class="componentSquare"></div>
+						<div id="offer11" class="componentSquare"></div><div id="offer12" class="componentSquare"></div>
+						<div id="offer13" class="componentSquare"></div><div id="offer14" class="componentSquare"></div>
+						<div id="offer15" class="componentSquare"></div>		 					
+					</div>
+				</div>						
 			</div> 
 			<div style="width:100%;height:25%;">
-				
+				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
+					Bundle strategy: <p id="bundleStrategy" style="font-weight:bold;"></p>
+				</div>
+				<div style="padding:10px;">
+					<div id="bundleRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
+						<div id="bundle51" class="componentSquare"></div><div id="bundle52" class="componentSquare"></div>
+						<div id="bundle53" class="componentSquare"></div><div id="bundle54" class="componentSquare"></div>
+						<div id="bundle55" class="componentSquare"></div><div id="bundle41" class="componentSquare"></div>
+						<div id="bundle42" class="componentSquare"></div><div id="bundle43" class="componentSquare"></div>
+						<div id="bundle44" class="componentSquare"></div><div id="bundle45" class="componentSquare"></div>
+						<div id="bundle31" class="componentSquare"></div><div id="bundle32" class="componentSquare"></div>
+						<div id="bundle33" class="componentSquare"></div><div id="bundle34" class="componentSquare"></div>
+						<div id="bundle35" class="componentSquare"></div><div id="bundle21" class="componentSquare"></div>
+						<div id="bundle22" class="componentSquare"></div><div id="bundle23" class="componentSquare"></div>
+						<div id="bundle24" class="componentSquare"></div><div id="bundle25" class="componentSquare"></div>
+						<div id="bundle11" class="componentSquare"></div><div id="bundle12" class="componentSquare"></div>
+						<div id="bundle13" class="componentSquare"></div><div id="bundle14" class="componentSquare"></div>
+						<div id="bundle15" class="componentSquare"></div>		 					
+					</div>
+				</div>						
+			</div> 				
 			</div> 			
 		</div>
 		</div>
@@ -203,7 +253,7 @@
 		<script>
 		
 			function dockRightDiv(){
-				document.getElementById("rightDockedDiv").style.left = window.innerWidth - 350;
+				document.getElementById("rightDockedDiv").style.left = window.innerWidth - 375;
 			}
 			
 			var three = THREE;
@@ -238,8 +288,8 @@
 			controls.rotateSpeed = 1.0;
 			controls.zoomSpeed = 1.2;
 			controls.panSpeed = 0.9;
-			controls.noZoom = false;
-			controls.maxDistance = 20;
+			controls.noZoom = true;
+			controls.maxDistance = 15;
 			controls.minDistance = 3;
 			controls.noPan = false;
 			controls.staticMoving = false;
@@ -341,11 +391,22 @@
 			}
 
 			function drawSeries2(){
-				
+
+				var list = document.getElementById("recommendationRightDock").querySelectorAll("div");
+				if(list.length > 0){
+					for(var a=0;a<list.length;a++){
+						//console.log(list[a].id);
+						list[a].className = "componentSquare";
+					}
+				}			
 				scene.remove(groupSeries2);
 				groupSeries2 = new THREE.Group();
 				var x = document.getElementById("series2x").value;
 				var y = document.getElementById("series2y").value;
+				
+				var recommendationStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
+				document.getElementById("recommendationStrategy").innerText = recommendationStrategyArr[Math.min(x,y)];
+				
 				if(x > 0 && y > 0){
 					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
 					var material = new THREE.MeshBasicMaterial( {color: 0x3CAEA3, transparent:true, opacity:0.9} );				
@@ -361,6 +422,9 @@
 						var currentLayer = layers[i];
 						for(var j=0;j<=(x-1);j++){
 							groupSeries2.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+							var tempi= (currentLayer[j][1]+1);
+							var tempj= (currentLayer[j][2]+1);
+							document.getElementById("recommend"+tempi+tempj).className = "componentRecSquareHilighted";							
 						}
 					}
 					scene.add(groupSeries2);
@@ -369,11 +433,21 @@
 			}
 
 			function drawSeries3(){
-				
+				var list = document.getElementById("offerRightDock").querySelectorAll("div");
+				if(list.length > 0){
+					for(var a=0;a<list.length;a++){
+						//console.log(list[a].id);
+						list[a].className = "componentSquare";
+					}
+				}					
 				scene.remove(groupSeries3);
 				groupSeries3 = new THREE.Group();
 				var x = document.getElementById("series3x").value;
 				var y = document.getElementById("series3y").value;
+
+				var offerStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
+				document.getElementById("offerStrategy").innerText = offerStrategyArr[Math.min(x,y)];
+				
 				if(x > 0 && y > 0){
 					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
 					var material = new THREE.MeshBasicMaterial( {color: 0xF6D55C, transparent:true, opacity:0.9} );				
@@ -389,6 +463,10 @@
 						var currentLayer = layers[i];
 						for(var j=0;j<=(x-1);j++){
 							groupSeries3.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+							var tempi= (currentLayer[j][1]+1);
+							var tempj= (currentLayer[j][2]+1);
+							document.getElementById("offer"+tempi+tempj).className = "componentOffSquareHilighted";							
+							
 						}
 					}
 					scene.add(groupSeries3);
@@ -397,11 +475,21 @@
 			}
 
 			function drawSeries4(){
-				
+				var list = document.getElementById("bundleRightDock").querySelectorAll("div");
+				if(list.length > 0){
+					for(var a=0;a<list.length;a++){
+						//console.log(list[a].id);
+						list[a].className = "componentSquare";
+					}
+				}					
 				scene.remove(groupSeries4);
 				groupSeries4 = new THREE.Group();
 				var x = document.getElementById("series4x").value;
 				var y = document.getElementById("series4y").value;
+				
+				var bundleStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
+				document.getElementById("bundleStrategy").innerText = bundleStrategyArr[Math.min(x,y)];
+				
 				if(x > 0 && y > 0){
 					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
 					var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
@@ -417,6 +505,10 @@
 						var currentLayer = layers[i];
 						for(var j=0;j<=(x-1);j++){
 							groupSeries4.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+							var tempi= (currentLayer[j][1]+1);
+							var tempj= (currentLayer[j][2]+1);
+							document.getElementById("bundle"+tempi+tempj).className = "componentBundSquareHilighted";							
+							
 						}
 					}
 					scene.add(groupSeries4);
