@@ -21,8 +21,11 @@
 			.componentBundSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #ED553B; opacity:0.8;}
 		</style>
 		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/jquery-ui.css" />
+		
 		<script src="scripts/jquery-1.4.4.min.js"></script>
 		<script src="scripts/jquery.reveal.js"></script>
+		<script src="scripts/jquery-ui.js"></script>
 	</head>
 	<body style="font-family: Century Gothic, sans-serif;" onload="dockRightDiv();drawSeries1();drawSeries2();drawSeries3();drawSeries4();drawMasterSkeleton();">
 		<div>
@@ -275,6 +278,10 @@
 		
 		<script>
 		
+			$( function() {
+				$( "#series1x" ).selectmenu();
+			} );
+			
 			function dockRightDiv(){
 				document.getElementById("rightDockedDiv").style.left = window.innerWidth - 375;
 			}
@@ -289,8 +296,8 @@
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			document.body.appendChild(renderer.domElement);
 
-			camera.position.z = 20;
-			camera.position.x = 20;
+			camera.position.z = 15;
+			camera.position.x = 15;
 			camera.position.y = 20;			
 			
 			var lineMaterial = new THREE.LineBasicMaterial( { color: 0x808080 } );

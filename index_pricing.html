@@ -1,0 +1,348 @@
+<html>
+	<head>
+		<title>Personalization Framework</title>
+		<style>
+			*{margin:0;padding:0;background:white;}
+			body{overflow:hidden;font-family: Century Gothic, sans-serif !important;}
+			form{
+			  position:absolute;
+			  bottom:0;
+			  left:0;
+			  right:0;
+			  background:#efefef;
+			  padding:1em;
+			  text-align:center;
+			}	
+			canvas { display: block; }
+			.componentSquare{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #FFFFFF;}
+			.componentSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #20639B; opacity:0.8;}
+			.componentRecSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #3CAEA3; opacity:0.8;}
+			.componentOffSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #F6D55C; opacity:0.8;}
+			.componentBundSquareHilighted{float:left;width:23px;height:23px;border:1px solid #FFFFFF;background-color: #ED553B; opacity:0.8;}
+			
+
+			
+
+			.sliderWithLabels {
+				 width: 90%;
+				 padding: 20px 20px 0;
+				 height: 80px;
+				 overflow: hidden;
+				 display: none;
+			}
+			 .sliderWithLabels input[type=range] {
+				font-family: Century Gothic, sans-serif;
+				 position: relative;
+				 height: 0.5rem;
+				 margin-top: 1.25rem;
+				 margin-bottom: 2.25rem;
+				 background-color: #e6e6e6;
+				 cursor: pointer;
+				 -webkit-user-select: none;
+				 -moz-user-select: none;
+				 -ms-user-select: none;
+				 user-select: none;
+				 -ms-touch-action: none;
+				 touch-action: none;
+				 top: -49px;
+				 position: relative;
+				 -webkit-appearance: none;
+				 width: 100%;
+				 height: 10px;
+				 background: #d3d3d3;
+				 outline: none;
+				 border-radius: 10px;
+			}
+			 .sliderWithLabels input[type=range]::-webkit-slider-thumb {
+				 -webkit-appearance: none;
+				 appearance: none;
+				 width: 20px;
+				 height: 20px;
+				 background: #4087c7;
+				 cursor: pointer;
+				 border-radius: 100%;
+			}
+			 .sliderWithLabels input[type=range]::-moz-range-thumb {
+				 width: 20px;
+				 height: 20px;
+				 background: #4087c7;
+				 cursor: pointer;
+			}
+			 .sliderWithLabels > div {
+				 display: flex;
+				 align-items: stretch;
+				 height: 20px;
+				 margin-top: -6px;
+				 position: relative;
+				 width: 100%;
+			}
+			 .sliderWithLabels > div > div {
+				 color: white;
+				 width: 100px;
+				 margin: 0px;
+				 text-align: center;
+				 line-height: 75px;
+				 font-size: 30px;
+				 flex: 1;
+				 border-right: 1px solid #d3d3d3;
+				 border-left: 1px solid #d3d3d3;
+			}
+			 .sliderWithLabels > div > div:first-of-type {
+				 border-left: 2px solid #fff;
+			}
+			 .sliderWithLabels > div > div:last-of-type {
+				 border-right: 2px solid #fff;
+			}
+			 .sliderWithLabels > div > span {
+				 color: #444;
+				 margin: 0px;
+				 text-align: center;
+				 line-height: 50px;
+				 font-size: 13px;
+				 flex: 1;
+				 font-family: Century Gothic, sans-serif;
+				 background-color:transparent !important;
+			}
+			 .sliderWithLabels > div.step-labels {
+				 top: -10px;
+				 background-color:transparent !important;
+			}
+			 .sliderWithLabels > div.step-labels span {
+				 cursor: pointer;
+			}
+			 .sliderWithLabels > div.step-marks {
+				 width: calc(100% - 20px) !important;
+				 margin-left: 10px;
+			}
+			 
+						
+		
+			
+		</style>
+		
+		<script src="scripts/jquery-3.5.1.min.js"></script>
+
+		</head>
+	<body style="font-family: Century Gothic, sans-serif;" onload="dockRightDiv();styleSlider();drawSeries1();">
+		<div>
+			<div style="position:fixed;width:100%;padding:1%;text-align:center;font-size:30px;top:0;">
+				Airline Pricing Maturity Assessment Framework
+			</div>
+		<div style="position:fixed;float:left;width:375px;height:75%;top:0;background-color:transparent !important;">
+			<div style="width:100%;height:100px;background-color:transparent !important;">&nbsp;</div>
+			<div style="align:centre;text-align:centre;width:90%;border:0px solid red;padding-left:12px;background-color:transparent !important;">
+				<div>Segmentation Capability :</div>
+				<div class="sliderWithLabels" id="segmentationSlider"></div>
+				<div>Optimization Capability :</div>
+				<div class="sliderWithLabels" id="optimizationSlider"></div>
+			</div>
+		</div>
+		<div style="position:fixed;float:left;width:375px;bottom:10;left:0;background-color:transparent !important;">
+			<div style="width:70%;float:left;text-align:left;padding:5%;font-size:30px;">Pricing Maturity:</div>
+			<div id="percentagePlaceHolder" style="text-align:right;padding:5%;width:9.9%;float:left;font-weight:bold;font-size:30px;"></div>
+		</div>
+		<div id="rightDockedDiv" style="position:fixed;width:375px;bottom: 0;right : 0;"> 
+			<img style="background-color:transparent;width:375px;" src="images/paper-plane-31528.png"/>
+		</div> 			
+		</div>
+
+		</div>
+
+		<script src="scripts/three.js"></script>
+		<script src="scripts/TrackballControls.js"></script>
+		
+		<script>
+
+
+
+			// setup slider HTML, then call the following method with the values
+			function setupSlider(id, vals, initialVal = 0) {
+			  $(`#${id}`).append($('<div>').addClass('step-marks'));
+			  $(`#${id}`).append($('<div>').addClass('step-labels'));
+			  $(`#${id}`).append($('<input type="range">'));
+			  
+			  const min = 0;
+			  const max = vals.length - 1;
+				var rangeId = id+"range";
+			  // initialise slider vals
+			  $(`#${id} input[type=range]`)
+				.attr({ min: min, max: max, id: rangeId, oninput: "drawSeries1();"})
+				.val(initialVal);
+
+			  vals.forEach((x, i) => {
+				if (i < vals.length - 1) {
+				  $(`#${id} .step-marks`).append($("<div>"));
+				}
+				const label = $("<span>").text(x).on('click', () => $(`#${id} input[type=range]`).val(i));    
+				$(`#${id} .step-labels`).append(label);
+			  });
+
+			  const length = vals.length;
+			  const multiply = length / (length - 1);
+			  const widthVal = `calc(100% * ${multiply} - 25px)`;
+			  const marginVal = `calc(${widthVal} / ${length * -2} + 10px)`;
+			  
+			  $(`#${id} .step-labels`).css("width", widthVal);
+			  $(`#${id} .step-labels`).css("margin-left", marginVal);
+			  $(`#${id}`).show();
+			}		
+		
+		
+			function styleSlider(){
+				setupSlider('segmentationSlider', ["None", "Mass", "Macro", "Micro", "Person"], 0);
+				setupSlider('optimizationSlider', ["None", "Stage 1", "Stage 2", "Stage 3", "Stage 4"], 0);	
+			}
+		
+			function dockRightDiv(){
+				document.getElementById("rightDockedDiv").style.left = window.innerWidth - 375;
+			}
+			
+			var three = THREE;
+			var mouse = new THREE.Vector2();
+			var scene = new three.Scene();
+			scene.background = new THREE.Color( 0xffffff );
+			
+			var camera = new three.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
+			var renderer = new three.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			camera.position.z = 15;
+			camera.position.x = 15;
+			camera.position.y = 10;			
+			
+			var lineMaterial = new THREE.LineBasicMaterial( { color: 0x808080 } );
+			var points = [];
+			//points.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			//points.push( new THREE.Vector3( -0.5, 1, -0.5 ) );
+			points.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			points.push( new THREE.Vector3( 5, -0.5, -0.5 ) );	
+			points.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
+			points.push( new THREE.Vector3( -0.5, -0.5, 5 ) );			
+			
+			var lineGeometryy = new THREE.BufferGeometry().setFromPoints( points );
+			var axesLines = new THREE.Line( lineGeometryy, lineMaterial );
+			//scene.add( axesLines );
+			
+		
+			var controls = new THREE.TrackballControls( camera, renderer.domElement );
+			controls.rotateSpeed = 1.0;
+			controls.zoomSpeed = 1.2;
+			controls.panSpeed = 0.9;
+			controls.noZoom = true;
+			controls.maxDistance = 12;
+			controls.minDistance = 3;
+			controls.noPan = false;
+			controls.staticMoving = false;
+			controls.dynamicDampingFactor = 0.1;
+			
+			renderer.domElement.addEventListener( 'mousemove', onMouseMove );
+			
+
+		
+			function calculatePercentage(){
+				var seriesACubes = document.getElementById("segmentationSliderrange").value * document.getElementById("optimizationSliderrange").value;
+				var totalPercent = ((seriesACubes)/16)*100;
+				document.getElementById("percentagePlaceHolder").innerText = Math.round((totalPercent + Number.EPSILON) * 100)/100 ;
+			}
+
+			function createBlock(x,y,z,geo,mat){
+				var cube = new THREE.Mesh( geo, mat );
+				cube.position.set( x, y, z );
+				var cubeGeo = new THREE.EdgesGeometry( cube.geometry ); // or WireframeGeometry
+				var cubeMat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
+				var wireframe = new THREE.LineSegments( cubeGeo, cubeMat );
+				cube.add( wireframe );
+				return cube;				
+			}
+			
+			function createFrameBlock(x,y,z,geo,mat){
+				var cube = new THREE.Mesh( geo, mat );
+				cube.position.set( x, y, z );
+				var cubeGeo = new THREE.EdgesGeometry( cube.geometry ); // or WireframeGeometry
+				var cubeMat = new THREE.LineBasicMaterial( { color: 0xA9A9A9, linewidth: 1 } );
+				var wireframe = new THREE.LineSegments( cubeGeo, cubeMat );
+				cube.add( wireframe );
+				return cube;				
+			}
+			
+			var masterSkeleton = new THREE.Group();
+			var groupSeries1 = new THREE.Group();
+			var groupSeries2 = new THREE.Group();
+			var groupSeries3 = new THREE.Group();
+			var groupSeries4 = new THREE.Group();
+			var groupSeries5 = new THREE.Group();
+			
+			function drawMasterSkeleton(){
+				scene.remove(masterSkeleton);
+				masterSkeleton = new THREE.Group();
+				var geometry = new THREE.BoxBufferGeometry( 4, 4, 4 );
+				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, transparent:true, wireframe:true, opacity:0.01} );
+				masterSkeleton.add(createFrameBlock(1.5,1.5,1.5,geometry,material));	
+				scene.add(masterSkeleton);				
+			}
+			
+			function drawSeries1(){
+			
+				scene.remove(groupSeries1);
+				groupSeries1 = new THREE.Group();
+				var x = document.getElementById("segmentationSliderrange").value;
+				var y = document.getElementById("optimizationSliderrange").value;
+			
+				if(x > 0 && y > 0){
+					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+					var material = new THREE.MeshBasicMaterial( {color: 0x20639B, transparent:true, opacity:0.9} );				
+					
+					var layer1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
+					var layer2 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
+					var layer3 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
+					var layer4 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
+					var layer5 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
+					/*var layer2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
+					var layer3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
+					var layer4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
+					var layer5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];*/
+					var layers = [layer1,layer2,layer3,layer4,layer5];
+					
+					for(var i=0;i<=(y-1);i++){
+						var currentLayer = layers[i];
+						for(var j=0;j<=(x-1);j++){
+							groupSeries1.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
+							var tempi= (currentLayer[j][1]+1);
+							var tempj= (currentLayer[j][2]+1);
+						}
+					}
+					scene.add(groupSeries1);
+				}
+				calculatePercentage();
+			}
+
+			function onMouseMove( e ) {
+
+				mouse.x = e.clientX;
+				mouse.y = e.clientY;
+
+			}
+			
+			// shim layer with setTimeout fallback
+			window.requestAnimFrame = (function(){
+				return  window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					function(callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+			
+			function render() {
+				controls.update();
+				renderer.render(scene, camera);
+				requestAnimFrame(render);
+			}			
+			render();
+		
+		
+		</script>
+		
+	</body>
+</html>
