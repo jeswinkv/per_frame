@@ -3,7 +3,6 @@
 		<title>Personalization Framework</title>
 		<style>
 			*{margin:0;padding:0;background:white;}
-			body{overflow:hidden;}
 			form{
 			  position:absolute;
 			  bottom:0;
@@ -26,580 +25,106 @@
 		<script src="scripts/jquery-1.4.4.min.js"></script>
 		<script src="scripts/jquery.reveal.js"></script>
 		<script src="scripts/jquery-ui.js"></script>
-	</head>
-	<body style="font-family: Century Gothic, sans-serif;" onload="dockRightDiv();drawSeries1();drawSeries2();drawSeries3();drawSeries4();drawMasterSkeleton();">
-		<div>
-		<div style="position:absolute;float:left;width:375px;height:100%;border-right:0px solid #D3D3D3;box-shadow: 7px 0px 10px -9px #000000;">
-			<div style="width:96%;padding:2%;border:0px solid red;text-align:center;margin-bottom:20px;font-size:30px;text-decoration: underline;">
-				IBS Personalization Maturity Assessment Framework
-			</div>
-			<div style="width:100%;height:50px;">&nbsp;</div>
-			<div style="align:centre;text-align:centre;width:90%;border:0px solid red;padding-left:12px;">
-				<table cellspacing="1" cellpadding="0" border="0" height="200" style="width:350px !important;font-size:14;">
-					<tr>
-						<td style="font-weight:bold;padding:5px;">&nbsp;</td>
-						<td style="font-weight:bold;padding:5px;">Segmentation</td>
-						<td style="font-weight:bold;padding:5px;">Optimization</td>
-					</tr>
-					<tr>
-						<td style="background-color:#20639B !important;color:#FFFFFF;padding:5px;">Pricing</td>
-						<td>
-							<select name="series1x" id="series1x" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1" >Mass</option>
-							  <option value="2">Macro</option>
-							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
-							</select>
-							
-						</td>
-						<td>
-							<select name="series1y" id="series1y" onchange="drawSeries1()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Stage 1</option>
-							  <option value="2">Stage 2</option>
-							  <option value="3">Stage 3</option>
-							  <option value="4">Stage 4</option>
-							</select>				
-						</td>
-					</tr>
-					<tr>
-						<td style="background-color:#3CAEA3 !important;color:#FFFFFF;padding:5px;">Recommendation</td>
-						<td>
-							<select name="series2x" id="series2x" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Mass</option>
-							  <option value="2">Macro</option>
-							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
-							</select>			
-						</td>
-						<td>
-							<select name="series2y" id="series2y" onchange="drawSeries2()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Stage 1</option>
-							  <option value="2">Stage 2</option>
-							  <option value="3">Stage 3</option>
-							  <option value="4">Stage 4</option>
-							</select>				
-						</td>
-					</tr>
-					<tr>
-						<td style="background-color:#F6D55C !important;color:#FFFFFF;padding:5px;">Offers</td>
-						<td>
-							<select name="series3x" id="series3x" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Mass</option>
-							  <option value="2">Macro</option>
-							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
-							</select>				
-						</td>
-						<td>
-							<select name="series3y" id="series3y" onchange="drawSeries3()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Stage 1</option>
-							  <option value="2">Stage 2</option>
-							  <option value="3">Stage 3</option>
-							  <option value="4">Stage 4</option>
-							</select>				
-						</td>
-					</tr>
-					<tr>
-						<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Bundles</td>
-						<td>
-							<select name="series4x" id="series4x" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Mass</option>
-							  <option value="2">Macro</option>
-							  <option value="3">Micro</option>
-							  <option value="4">Person</option>
-							</select>				
-						</td>
-						<td>
-							<select name="series4y" id="series4y" onchange="drawSeries4()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;border:1px solid #ccc;">
-							  <option value="0" >None</option>
-							  <option value="1">Stage 1</option>
-							  <option value="2">Stage 2</option>
-							  <option value="3">Stage 3</option>
-							  <option value="4">Stage 4</option>
-							</select>	
-						</td>
-					</tr>	
-					<!--<tr>
-						<td style="background-color:#ED553B !important;color:#FFFFFF;padding:5px;">Others</td>
-						<td>
-							<select name="series5x" id="series5x" onchange="drawSeries5()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="1">Mass</option>
-							  <option value="2">Macro</option>
-							  <option value="3">Micro</option>
-							  <option value="4">Person Minimal</option>
-							  <option value="5">Person Full</option>
-							</select>	
-						</td>
-						<td>
-							<select name="series5y" id="series5y" onchange="drawSeries5()" style="width:100%;height:100%;font-family: Century Gothic, sans-serif;">
-							  <option value="1">None</option>
-							  <option value="2">Analytics</option>
-							  <option value="3">Feedback</option>
-							  <option value="4">Reinforcement</option>
-							  <option value="5">Click Stream</option>
-							</select>			
-						</td>
-					</tr>-->	
-				</table>
-			</div>
-			<div style="width:90%;text-align:right;padding:5%;font-size:14;">
-				<a href="#" data-reveal-id="myModal" data-animation="fade">More information</a>
-			</div>
-			<div style="width:100%;height:50px;">&nbsp;</div>
-			<div>
-				<div style="width:50%;float:left;text-align:left;padding:5%;font-size:30px;">Score:</div>
-				<div id="percentagePlaceHolder" style="text-align:right;padding:5%;width:29.9%;float:left;font-weight:bold;font-size:30px;"></div>
-			</div>
-		</div>
-		<div><img style="position:absolute;background-color:transparent;width:100px;left:400px;" src="images/360_2.png"/></div>
-		<div id="rightDockedDiv" style="position:absolute;width:375px;height:99%;border-left:0px solid #D3D3D3;box-shadow: -7px 0px 10px -9px #000000;"> 
-			<div style="width:375px;height:25%;border-bottom:0px solid #D3D3D3;">
-				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					<p style="text-decoration: underline;">Pricing strategy: </p><p id="pricingStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;"></p>
-				</div>
-				<div style="float:left;width:1%;height:17%;margin-top:90px;text-align:right;font-size:10px;transform: rotate(-90deg);background-color:transparent;">
-					Optimization
-				</div>
-				<div style="padding:10px;">
-					<div id="pricingRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
-						<div id="component51" class="componentSquare"></div><div id="component52" class="componentSquare"></div>
-						<div id="component53" class="componentSquare"></div><div id="component54" class="componentSquare"></div>
-						<div id="component55" class="componentSquare"></div><div id="component41" class="componentSquare"></div>
-						<div id="component42" class="componentSquare"></div><div id="component43" class="componentSquare"></div>
-						<div id="component44" class="componentSquare"></div><div id="component45" class="componentSquare"></div>
-						<div id="component31" class="componentSquare"></div><div id="component32" class="componentSquare"></div>
-						<div id="component33" class="componentSquare"></div><div id="component34" class="componentSquare"></div>
-						<div id="component35" class="componentSquare"></div><div id="component21" class="componentSquare"></div>
-						<div id="component22" class="componentSquare"></div><div id="component23" class="componentSquare"></div>
-						<div id="component24" class="componentSquare"></div><div id="component25" class="componentSquare"></div>
-						<div id="component11" class="componentSquare"></div><div id="component12" class="componentSquare"></div>
-						<div id="component13" class="componentSquare"></div><div id="component14" class="componentSquare"></div>
-						<div id="component15" class="componentSquare"></div>							
-					</div>
-				</div>
-				<div style="float:left;width:125px;height:10px;font-size:10px;text-align:center;">Segmentation</div>
-			</div>
-			
-			<div style="width:100%;height:25%;">
-				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					<p style="text-decoration: underline;">Recommendation strategy: </p><p id="recommendationStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;"></p>
-				</div>
-				<div style="float:left;width:1%;height:17%;margin-top:90px;text-align:right;font-size:10px;transform: rotate(-90deg);background-color:transparent;">
-					Optimization
-				</div>				
-				<div style="padding:10px;">
-					<div id="recommendationRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
-						<div id="recommend51" class="componentSquare"></div><div id="recommend52" class="componentSquare"></div>
-						<div id="recommend53" class="componentSquare"></div><div id="recommend54" class="componentSquare"></div>
-						<div id="recommend55" class="componentSquare"></div><div id="recommend41" class="componentSquare"></div>
-						<div id="recommend42" class="componentSquare"></div><div id="recommend43" class="componentSquare"></div>
-						<div id="recommend44" class="componentSquare"></div><div id="recommend45" class="componentSquare"></div>
-						<div id="recommend31" class="componentSquare"></div><div id="recommend32" class="componentSquare"></div>
-						<div id="recommend33" class="componentSquare"></div><div id="recommend34" class="componentSquare"></div>
-						<div id="recommend35" class="componentSquare"></div><div id="recommend21" class="componentSquare"></div>
-						<div id="recommend22" class="componentSquare"></div><div id="recommend23" class="componentSquare"></div>
-						<div id="recommend24" class="componentSquare"></div><div id="recommend25" class="componentSquare"></div>
-						<div id="recommend11" class="componentSquare"></div><div id="recommend12" class="componentSquare"></div>
-						<div id="recommend13" class="componentSquare"></div><div id="recommend14" class="componentSquare"></div>
-						<div id="recommend15" class="componentSquare"></div>		 					
-					</div>
-				</div>
-				<div style="float:left;width:125px;height:10px;font-size:10px;text-align:center;">Segmentation</div>
-			</div> 
-			<div style="width:100%;height:25%;">
-				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					<p style="text-decoration: underline;">Offer strategy: </p><p id="offerStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;"></p>
-				</div>
-				<div style="float:left;width:1%;height:17%;margin-top:90px;text-align:right;font-size:10px;transform: rotate(-90deg);background-color:transparent;">
-					Optimization
-				</div>				
-				<div style="padding:10px;">
-					<div id="offerRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
-						<div id="offer51" class="componentSquare"></div><div id="offer52" class="componentSquare"></div>
-						<div id="offer53" class="componentSquare"></div><div id="offer54" class="componentSquare"></div>
-						<div id="offer55" class="componentSquare"></div><div id="offer41" class="componentSquare"></div>
-						<div id="offer42" class="componentSquare"></div><div id="offer43" class="componentSquare"></div>
-						<div id="offer44" class="componentSquare"></div><div id="offer45" class="componentSquare"></div>
-						<div id="offer31" class="componentSquare"></div><div id="offer32" class="componentSquare"></div>
-						<div id="offer33" class="componentSquare"></div><div id="offer34" class="componentSquare"></div>
-						<div id="offer35" class="componentSquare"></div><div id="offer21" class="componentSquare"></div>
-						<div id="offer22" class="componentSquare"></div><div id="offer23" class="componentSquare"></div>
-						<div id="offer24" class="componentSquare"></div><div id="offer25" class="componentSquare"></div>
-						<div id="offer11" class="componentSquare"></div><div id="offer12" class="componentSquare"></div>
-						<div id="offer13" class="componentSquare"></div><div id="offer14" class="componentSquare"></div>
-						<div id="offer15" class="componentSquare"></div>		 					
-					</div>
-				</div>
-				<div style="float:left;width:125px;height:10px;font-size:10px;text-align:center;">Segmentation</div>
-			</div> 
-			<div style="width:100%;height:25%;">
-				<div style="float:left;width:45%;height:70%;border:0px solid #D3D3D3;padding:20px;">
-					<p style="text-decoration: underline;">Bundle strategy: </p><p id="bundleStrategy" style="font-weight:bold;font-size:20px;margin-top:20px;"></p>
-				</div>
-				<div style="float:left;width:1%;height:17%;margin-top:90px;text-align:right;font-size:10px;transform: rotate(-90deg);background-color:transparent;">
-					Optimization
-				</div>				
-				<div style="padding:10px;">
-					<div id="bundleRightDock" style="float:left;width:125px;height:125px;border-left:1px solid #D3D3D3;border-bottom:1px solid #D3D3D3;">
-						<div id="bundle51" class="componentSquare"></div><div id="bundle52" class="componentSquare"></div>
-						<div id="bundle53" class="componentSquare"></div><div id="bundle54" class="componentSquare"></div>
-						<div id="bundle55" class="componentSquare"></div><div id="bundle41" class="componentSquare"></div>
-						<div id="bundle42" class="componentSquare"></div><div id="bundle43" class="componentSquare"></div>
-						<div id="bundle44" class="componentSquare"></div><div id="bundle45" class="componentSquare"></div>
-						<div id="bundle31" class="componentSquare"></div><div id="bundle32" class="componentSquare"></div>
-						<div id="bundle33" class="componentSquare"></div><div id="bundle34" class="componentSquare"></div>
-						<div id="bundle35" class="componentSquare"></div><div id="bundle21" class="componentSquare"></div>
-						<div id="bundle22" class="componentSquare"></div><div id="bundle23" class="componentSquare"></div>
-						<div id="bundle24" class="componentSquare"></div><div id="bundle25" class="componentSquare"></div>
-						<div id="bundle11" class="componentSquare"></div><div id="bundle12" class="componentSquare"></div>
-						<div id="bundle13" class="componentSquare"></div><div id="bundle14" class="componentSquare"></div>
-						<div id="bundle15" class="componentSquare"></div>		 					
-					</div>
-				</div>
-				<div style="float:left;width:125px;height:10px;font-size:10px;text-align:center;">Segmentation</div>
-			</div> 				
-			</div> 			
-		</div>
-		<div id="myModal" class="reveal-modal" style="width:610px;background-color:#ffffff;">
-		  <img src="images/framework_2.png" style="width:600px;"/>
-		  <a class="close-reveal-modal">&#215;</a>
-		</div>		
-		</div>
-
-		<script src="scripts/three.js"></script>
-		<script src="scripts/TrackballControls.js"></script>
-		
-		<script>
-		
-			$( function() {
-				$( "#series1x" ).selectmenu();
-			} );
-			
-			function dockRightDiv(){
-				document.getElementById("rightDockedDiv").style.left = window.innerWidth - 375;
+		<script language="javascript">
+			function submitPage(){
+				var queryString = "?px="+$("input:radio[name='px']:checked").val()+
+									"&py="+$("input:radio[name='py']:checked").val()+
+									"&rx="+$("input:radio[name='rx']:checked").val()+
+									"&ry="+$("input:radio[name='ry']:checked").val()+
+									"&ox="+$("input:radio[name='ox']:checked").val()+
+									"&oy="+$("input:radio[name='oy']:checked").val()+
+									"&bx="+$("input:radio[name='bx']:checked").val()+
+									"&by="+$("input:radio[name='by']:checked").val();
+									//alert(queryString);
+				window.location= "index_embed.html" + queryString;
 			}
-			
-			var three = THREE;
-			var mouse = new THREE.Vector2();
-			var scene = new three.Scene();
-			scene.background = new THREE.Color( 0xffffff );
-			
-			var camera = new three.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
-			var renderer = new three.WebGLRenderer();
-			renderer.setSize(window.innerWidth, window.innerHeight);
-			document.body.appendChild(renderer.domElement);
-
-			camera.position.z = 15;
-			camera.position.x = 15;
-			camera.position.y = 20;			
-			
-			var lineMaterial = new THREE.LineBasicMaterial( { color: 0x808080 } );
-			var points = [];
-			points.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
-			points.push( new THREE.Vector3( -0.5, 6, -0.5 ) );
-			points.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
-			points.push( new THREE.Vector3( 6, -0.5, -0.5 ) );	
-			points.push( new THREE.Vector3( -0.5, -0.5, -0.5 ) );
-			points.push( new THREE.Vector3( -0.5, -0.5, 6 ) );			
-			
-			var lineGeometryy = new THREE.BufferGeometry().setFromPoints( points );
-			var axesLines = new THREE.Line( lineGeometryy, lineMaterial );
-			scene.add( axesLines );
-			
-		
-			var controls = new THREE.TrackballControls( camera, renderer.domElement );
-			controls.rotateSpeed = 1.0;
-			controls.zoomSpeed = 1.2;
-			controls.panSpeed = 0.9;
-			controls.noZoom = true;
-			controls.maxDistance = 15;
-			controls.minDistance = 3;
-			controls.noPan = false;
-			controls.staticMoving = false;
-			controls.dynamicDampingFactor = 0.1;
-			
-			renderer.domElement.addEventListener( 'mousemove', onMouseMove );
-			
-
-		
-			function calculatePercentage(){
-				var seriesACubes = document.getElementById("series1x").value * document.getElementById("series1y").value;
-				var seriesBCubes = document.getElementById("series2x").value * document.getElementById("series2y").value;
-				var seriesCCubes = document.getElementById("series3x").value * document.getElementById("series3y").value;
-				var seriesDCubes = document.getElementById("series4x").value * document.getElementById("series4y").value;
-				//var seriesECubes = document.getElementById("series5x").value * document.getElementById("series5y").value;
-				//var totalPercent = ((seriesACubes + seriesBCubes + seriesCCubes + seriesDCubes + seriesECubes)/125)*100;
-				var totalPercent = ((seriesACubes + seriesBCubes + seriesCCubes + seriesDCubes)/64)*100;
-				document.getElementById("percentagePlaceHolder").innerText = Math.round((totalPercent + Number.EPSILON) * 100)/100 ;
-				//alert(totalPercent);
-			}
-
-			function createBlock(x,y,z,geo,mat){
-				var cube = new THREE.Mesh( geo, mat );
-				cube.position.set( x, y, z );
-				var cubeGeo = new THREE.EdgesGeometry( cube.geometry ); // or WireframeGeometry
-				var cubeMat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
-				var wireframe = new THREE.LineSegments( cubeGeo, cubeMat );
-				cube.add( wireframe );
-				return cube;				
-			}
-			
-			function createFrameBlock(x,y,z,geo,mat){
-				var cube = new THREE.Mesh( geo, mat );
-				cube.position.set( x, y, z );
-				var cubeGeo = new THREE.EdgesGeometry( cube.geometry ); // or WireframeGeometry
-				var cubeMat = new THREE.LineBasicMaterial( { color: 0xA9A9A9, linewidth: 1 } );
-				var wireframe = new THREE.LineSegments( cubeGeo, cubeMat );
-				cube.add( wireframe );
-				return cube;				
-			}
-			
-			var masterSkeleton = new THREE.Group();
-			var groupSeries1 = new THREE.Group();
-			var groupSeries2 = new THREE.Group();
-			var groupSeries3 = new THREE.Group();
-			var groupSeries4 = new THREE.Group();
-			var groupSeries5 = new THREE.Group();
-			
-			function drawMasterSkeleton(){
-				scene.remove(masterSkeleton);
-				masterSkeleton = new THREE.Group();
-				var geometry = new THREE.BoxBufferGeometry( 4, 4, 4 );
-				var material = new THREE.MeshBasicMaterial( {color: 0xffffff, transparent:true, wireframe:true, opacity:0.01} );
-				masterSkeleton.add(createFrameBlock(1.5,1.5,1.5,geometry,material));	
-				scene.add(masterSkeleton);				
-			}
-			
-			function drawSeries1(){
-			
-				var list = document.getElementById("pricingRightDock").querySelectorAll("div");
-				if(list.length > 0){
-					for(var a=0;a<list.length;a++){
-						//console.log(list[a].id);
-						list[a].className = "componentSquare";
-					}
-				}
-
-				scene.remove(groupSeries1);
-				groupSeries1 = new THREE.Group();
-				var x = document.getElementById("series1x").value;
-				var y = document.getElementById("series1y").value;
-				
-				var pricingStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
-				document.getElementById("pricingStrategy").innerText = pricingStrategyArr[Math.min(x,y)];
-				
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0x20639B, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,0,4]];
-					var layer2 =[[0,1,0],[0,1,1],[0,1,2],[0,1,3],[0,1,4]];
-					var layer3 =[[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4]];
-					var layer4 =[[0,3,0],[0,3,1],[0,3,2],[0,3,3],[0,3,4]];
-					var layer5 =[[0,4,0],[0,4,1],[0,4,2],[0,4,3],[0,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries1.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-							var tempi= (currentLayer[j][1]+1);
-							var tempj= (currentLayer[j][2]+1);
-							document.getElementById("component"+tempi+tempj).className = "componentSquareHilighted";
-						}
-					}
-					scene.add(groupSeries1);
-				}
-				calculatePercentage();
-			}
-
-			function drawSeries2(){
-
-				var list = document.getElementById("recommendationRightDock").querySelectorAll("div");
-				if(list.length > 0){
-					for(var a=0;a<list.length;a++){
-						//console.log(list[a].id);
-						list[a].className = "componentSquare";
-					}
-				}			
-				scene.remove(groupSeries2);
-				groupSeries2 = new THREE.Group();
-				var x = document.getElementById("series2x").value;
-				var y = document.getElementById("series2y").value;
-				
-				var recommendationStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
-				document.getElementById("recommendationStrategy").innerText = recommendationStrategyArr[Math.min(x,y)];
-				
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0x3CAEA3, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[1,0,0],[1,0,1],[1,0,2],[1,0,3],[1,0,4]];
-					var layer2 =[[1,1,0],[1,1,1],[1,1,2],[1,1,3],[1,1,4]];
-					var layer3 =[[1,2,0],[1,2,1],[1,2,2],[1,2,3],[1,2,4]];
-					var layer4 =[[1,3,0],[1,3,1],[1,3,2],[1,3,3],[1,3,4]];
-					var layer5 =[[1,4,0],[1,4,1],[1,4,2],[1,4,3],[1,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries2.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-							var tempi= (currentLayer[j][1]+1);
-							var tempj= (currentLayer[j][2]+1);
-							document.getElementById("recommend"+tempi+tempj).className = "componentRecSquareHilighted";							
-						}
-					}
-					scene.add(groupSeries2);
-				}
-				calculatePercentage();
-			}
-
-			function drawSeries3(){
-				var list = document.getElementById("offerRightDock").querySelectorAll("div");
-				if(list.length > 0){
-					for(var a=0;a<list.length;a++){
-						//console.log(list[a].id);
-						list[a].className = "componentSquare";
-					}
-				}					
-				scene.remove(groupSeries3);
-				groupSeries3 = new THREE.Group();
-				var x = document.getElementById("series3x").value;
-				var y = document.getElementById("series3y").value;
-
-				var offerStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
-				document.getElementById("offerStrategy").innerText = offerStrategyArr[Math.min(x,y)];
-				
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0xF6D55C, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[2,0,0],[2,0,1],[2,0,2],[2,0,3],[2,0,4]];
-					var layer2 =[[2,1,0],[2,1,1],[2,1,2],[2,1,3],[2,1,4]];
-					var layer3 =[[2,2,0],[2,2,1],[2,2,2],[2,2,3],[2,2,4]];
-					var layer4 =[[2,3,0],[2,3,1],[2,3,2],[2,3,3],[2,3,4]];
-					var layer5 =[[2,4,0],[2,4,1],[2,4,2],[2,4,3],[2,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries3.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-							var tempi= (currentLayer[j][1]+1);
-							var tempj= (currentLayer[j][2]+1);
-							document.getElementById("offer"+tempi+tempj).className = "componentOffSquareHilighted";							
-							
-						}
-					}
-					scene.add(groupSeries3);
-				}
-				calculatePercentage();
-			}
-
-			function drawSeries4(){
-				var list = document.getElementById("bundleRightDock").querySelectorAll("div");
-				if(list.length > 0){
-					for(var a=0;a<list.length;a++){
-						//console.log(list[a].id);
-						list[a].className = "componentSquare";
-					}
-				}					
-				scene.remove(groupSeries4);
-				groupSeries4 = new THREE.Group();
-				var x = document.getElementById("series4x").value;
-				var y = document.getElementById("series4y").value;
-				
-				var bundleStrategyArr = ["None","Static","Predefined","Dynamic","Personalized"];
-				document.getElementById("bundleStrategy").innerText = bundleStrategyArr[Math.min(x,y)];
-				
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[3,0,0],[3,0,1],[3,0,2],[3,0,3],[3,0,4]];
-					var layer2 =[[3,1,0],[3,1,1],[3,1,2],[3,1,3],[3,1,4]];
-					var layer3 =[[3,2,0],[3,2,1],[3,2,2],[3,2,3],[3,2,4]];
-					var layer4 =[[3,3,0],[3,3,1],[3,3,2],[3,3,3],[3,3,4]];
-					var layer5 =[[3,4,0],[3,4,1],[3,4,2],[3,4,3],[3,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries4.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-							var tempi= (currentLayer[j][1]+1);
-							var tempj= (currentLayer[j][2]+1);
-							document.getElementById("bundle"+tempi+tempj).className = "componentBundSquareHilighted";							
-							
-						}
-					}
-					scene.add(groupSeries4);
-				}	
-				calculatePercentage();
-			}
-
-			function drawSeries5(){
-				
-				scene.remove(groupSeries5);
-				groupSeries5 = new THREE.Group();
-				var x = document.getElementById("series5x").value;
-				var y = document.getElementById("series5y").value;
-				if(x > 0 && y > 0){
-					var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
-					var material = new THREE.MeshBasicMaterial( {color: 0xED553B, transparent:true, opacity:0.9} );				
-					
-					var layer1 =[[4,0,0],[4,0,1],[4,0,2],[4,0,3],[4,0,4]];
-					var layer2 =[[4,1,0],[4,1,1],[4,1,2],[4,1,3],[4,1,4]];
-					var layer3 =[[4,2,0],[4,2,1],[4,2,2],[4,2,3],[4,2,4]];
-					var layer4 =[[4,3,0],[4,3,1],[4,3,2],[4,3,3],[4,3,4]];
-					var layer5 =[[4,4,0],[4,4,1],[4,4,2],[4,4,3],[4,4,4]];
-					var layers = [layer1,layer2,layer3,layer4,layer5];
-					
-					for(var i=0;i<=(y-1);i++){
-						var currentLayer = layers[i];
-						for(var j=0;j<=(x-1);j++){
-							groupSeries5.add(createBlock(currentLayer[j][0],currentLayer[j][1],currentLayer[j][2],geometry,material));
-						}
-					}
-					scene.add(groupSeries5);
-				}
-				calculatePercentage();
-			}
-			
-			function onMouseMove( e ) {
-
-				mouse.x = e.clientX;
-				mouse.y = e.clientY;
-
-			}
-			
-			// shim layer with setTimeout fallback
-			window.requestAnimFrame = (function(){
-				return  window.requestAnimationFrame ||
-					window.webkitRequestAnimationFrame ||
-					window.mozRequestAnimationFrame ||
-					function(callback) {
-						window.setTimeout(callback, 1000 / 60);
-					};
-			})();
-			
-			function render() {
-				controls.update();
-				renderer.render(scene, camera);
-				requestAnimFrame(render);
-			}			
-			render();
-		
-		
 		</script>
-		
+	</head>
+	<body style="font-family: Century Gothic, sans-serif;">
+		<table style="width:100%;">
+			<tr>
+				<td style="text-align:center;padding:20px;font-size:20px;font-weight:bold;">IBS Personalization Maturity Assessment Framework</td>
+			</tr>
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;">8 questions to help you discover your organization's personalization maturity level. </br></br>Take this brief assessment to find out your organization's personalization maturity and how to level up. You’ll get a PDF you can share with colleagues to spark internal conversations about how to move forward with personalization.</br></br></td>
+			</tr>
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you price your products (seats, other ancillaries etc.)?</span></br>
+					<input type="radio"  name="px" value="1"/> Static rule based pricing, catering to large groups of passengers</br>
+					<input type="radio"  name="px" value="2"/> Pricing is done for smaller groups of passengers, based on parameters like geography, demography etc.</br>
+					<input type="radio"  name="px" value="3"/> Prices are calculated for small groups and parameters like preferences, loyalty information etc. are considered for pricing.</br>
+					<input type="radio"  name="px" value="4"/> Price is calculated for each passenger, taking into account several parameters pertaining to the individual passenger.</br>
+				</td>
+			</tr>			
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you refine the pricing decision made for your products?</span></br>
+					<input type="radio"  name="py" value="1"/> Aggregate acceptance rate is determined and pricing refined periodically</br>
+					<input type="radio"  name="py" value="2"/> Demand is considered along with acceptance, and frequent refinements and adjustments are done to pricing.</br>
+					<input type="radio"  name="py" value="3"/> Demand and acceptance information is captured oh a daily/hourly, and refinements made accordingly.</br>
+					<input type="radio"  name="py" value="4"/> Real time capture of demand, purchase and behavioural information, for continuous refinements.</br>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you recommend the products that may be appealing to the passengers?</span></br>
+					<input type="radio"  name="rx" value="1"/> Static product listing, no recommendations.</br>
+					<input type="radio"  name="rx" value="2"/> Popularity based recommendations.</br>
+					<input type="radio"  name="rx" value="3"/> Recommendations made based on clustering of passengers as per several parameters like geography, demography etc.</br>
+					<input type="radio"  name="rx" value="4"/> Recommendations made to individual passengers based on their several factors like loyalty information, past purchase history, preferences etc.</br>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you refine the recommendations to the passengers?</span></br>
+					<input type="radio"  name="ry" value="1"/> Aggregate acceptance information is collected and portfolio modified periodically</br>
+					<input type="radio"  name="ry" value="2"/> Demand is considered along with acceptance of recommended products, and frequent refinements and adjustments are done to recommendations.</br>
+					<input type="radio"  name="ry" value="3"/> Demand and acceptance information is captured oh a daily/hourly, and refinements made accordingly.</br>
+					<input type="radio"  name="ry" value="4"/> Real time capture of demand, purchase and behavioural information, for continuous refinements.</br>
+				</td>
+			</tr>				
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How are offers on your products(seats, other ancillaries etc.) made?</span></br>
+					<input type="radio"  name="ox" value="1"/> Seasonal, festival offers etc. are made to large groups of passengers</br>
+					<input type="radio"  name="ox" value="2"/> Smaller groups of passengers, based on parameters like geography, demography etc. are identified and targeted offers are made to them.</br>
+					<input type="radio"  name="ox" value="3"/> Targeted offers are made to very small groups and parameters like preferences, loyalty information etc. are considered for making the offer.</br>
+					<input type="radio"  name="ox" value="4"/> Tailor made offers are made to each passenger, taking into account several parameters pertaining to the individual passenger.</br>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you refine the offers made to the passengers?</span></br>
+					<input type="radio"  name="oy" value="1"/> Aggregate acceptance information is collected and offers modified periodically</br>
+					<input type="radio"  name="oy" value="2"/> Demand is considered along with acceptance of offers, and frequent refinements and adjustments are done to offers.</br>
+					<input type="radio"  name="oy" value="3"/> Demand and acceptance information is captured oh a daily/hourly, and refinements made accordingly.</br>
+					<input type="radio"  name="oy" value="4"/> Real time capture of demand, purchase and behavioural information, for continuous refinements.</br>
+				</td>
+			</tr>				
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you bundle your products(seats, other ancillaries etc.)?</span></br>
+					<input type="radio"  name="bx" value="1"/> Static bundles are used.</br>
+					<input type="radio"  name="bx" value="2"/> Smaller groups of passengers, based on parameters like geography, demography etc. are identified and relevant products are grouped into a bundle.</br>
+					<input type="radio"  name="bx" value="3"/> Bundles are created for small groups and parameters like preferences, loyalty information etc. are considered for creating the bundle.</br>
+					<input type="radio"  name="bx" value="4"/> Tailor made bundles are made to each passenger, taking into account several parameters pertaining to the individual passenger.</br>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align:left;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;">
+					<span style="font-weight:bold;">How do you refine the bundles that are created?</span></br>
+					<input type="radio"  name="by" value="1"/> Aggregate acceptance information is collected and static bundles are modified periodically</br>
+					<input type="radio"  name="by" value="2"/> Demand is considered along with acceptance of products, and frequent refinements and adjustments are done to bundles.</br>
+					<input type="radio"  name="by" value="3"/> Demand and acceptance information is captured oh a daily/hourly, and refinements made accordingly.</br>
+					<input type="radio"  name="by" value="4"/> Real time capture of demand, purchase and behavioural information, for continuous refinements.</br>
+				</td>
+			</tr>				
+			<tr>
+				<td style="text-align:right;padding:10px;padding-left:50px;padding-right:50px;line-height:1.8;"></br>
+					<input type="button" style="width:200px;height:50px;background-color:#20639B;color:#ffffff;border:0px;" value="Submit" onclick="submitPage();"/>
+				</td>
+			</tr>
+		</table>
 	</body>
 </html>
